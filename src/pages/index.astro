@@ -1,8 +1,13 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+
+const pageTitle = 'Joan Lafulla - UX/UI Designer';
+const pageDescription = 'UX/UI Designer based in Barcelona, Spain. I create user-centered designs that are both functional and visually appealing.';
+const pageKeywords = 'UX, UI, Design, Joan Lafulla';
+const pageAuthor = 'Joan Lafulla';
 ---
 
-<Layout>
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} author={pageAuthor}>
 	<Welcome />
 </Layout>

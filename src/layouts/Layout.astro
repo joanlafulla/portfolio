@@ -1,3 +1,7 @@
+---
+const { title, description } = Astro.props;
+---
+
 <!doctype html>
 <html lang="es">
 	<head>
@@ -5,7 +9,15 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Joan Lafulla UX/UI Design</title>
+		<meta name="description" content={description} />
+		<meta name="author" content="Joan Lafulla" />
+		<meta name="keywords" content="UX, UI, Design, Joan Lafulla" />
+		<meta name="og:title" content={title} />
+		<meta name="og:description" content={description} />
+		<!-- <meta name="og:image" content="/og-image.png" />
+		<meta name="og:url" content="https://joanlafulla.com" /> -->
+		<meta name="og:type" content="website" />
+		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
