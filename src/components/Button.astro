@@ -1,0 +1,34 @@
+---
+const{ size } = Astro.props;
+const{ backgroundColor } = Astro.props;
+const{ backgroundColorHover } = Astro.props;
+const{ color } = Astro.props;
+---
+
+<button class="button" type="button">
+    <slot></slot>
+</button>
+
+<style define:vars={{ size: size, backgroundColor: backgroundColor, backgroundColorHover: backgroundColorHover, color: color }}>
+    .button {
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        height: var(--size);
+        background-color: var(--backgroundColor);
+        border-radius: 16px;
+        font-family: 'Albert Sans', serif;
+        font-size: 1rem;
+        color: var(--color);
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        border: 0;
+        transition: background-color 0.2s;
+    }
+
+    .button:hover {
+        background-color: var(--backgroundColorHover);
+    }

@@ -1,0 +1,286 @@
+---
+const{ headerText } = Astro.props;
+import clint from '../assets/clint.webp';
+import birds from '../assets/birds.webp';
+import me from '../assets/me.svg';
+import lafulla from '../assets/lafulla.svg';
+import Button from '../components/Button.astro';
+---
+
+<header>
+    <div class="header_contenedor">
+        <div class="header_top">
+            <h1>{headerText}</h1>
+            <div class="lafulla_mask">
+                <div class="lafulla">
+                    <img src={lafulla.src} alt="Mi nombre completo es Joan Lafulla Ferrer" class="lafulla_img"/>
+                </div>
+            </div>
+        </div>
+        <div class="header_bottom">
+            <div class="header_bottom_column_1"></div>
+            <div class="header_bottom_column_2"></div>
+            <div class="me_pictures">
+                <img src={birds.src} alt="Un cuadro de la película Los Pájaros" class="birds_img"/>
+                <div class="clint_img">
+                    <img src={clint.src} alt="Un cuadro de la película El bueno, el feo y el malo."/>
+                </div>
+                
+                <div class="header_bottom_me">
+                    <img src={me.src} alt="Una ilustración de Joan Lafulla, de espaldas, mirando cuadros." class="me_img"/>  
+                </div>
+            </div>
+            <div class="introduce">
+                <p>Soy diseñador con más de 20 años de experiencia. Actualmente trabajo como UX/UI Designer en Adevinta Real Estate (Fotocasa & Habitaclia).</p>
+               <Button size="56px" backgroundColor="rgba(246, 221, 0, 1)" backgroundColorHover="rgba(246, 221, 0, 0.5)" color="var(--text)">Scroll para conocerme</Button>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+<style>
+    header {
+        height: calc(100vh - 56px);
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: calc(56px + 1rem);
+        overflow-y: hidden;
+    }
+
+    .header_contenedor {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        margin: 0 1.5rem;
+    }
+
+    .header_top {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-row-start: 1;
+        grid-auto-rows: min-content;
+        grid-column: 2 / span 10;
+        grid-column-gap: 1rem;
+        max-height: 50vh;
+    }
+
+    .header_top h1 {
+        grid-column: 3 / span 8;
+        grid-row: 1 / span 1;
+        font-family: 'Albert Sans', serif;
+        font-size: 1.2rem;
+        color: var(--text);
+        font-weight: 400;
+    }
+
+    .lafulla_mask {
+        grid-column: 1 / -1;
+        grid-row: 2 / span 1;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 2rem
+    }
+
+    .lafulla {
+        position: relative;
+        top: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .lafulla_img {
+        width: 80%;
+        height: auto;
+        max-height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+  
+
+    .animation-lafulla {
+        animation: animation-lafulla .5s  ease-out forwards;
+    }
+
+    @keyframes animation-lafulla {
+        to {
+            top: 0;
+        }
+    }
+
+    .header_bottom {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        align-items: end;
+        justify-content: end;
+        justify-self: end;
+        position: relative;
+        min-height: 56vh;
+    }
+
+    .me_pictures {
+        grid-column: 7 / span 5;
+        grid-row: 1 / span 1;
+        position: relative;
+        overflow: visible;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: end;
+        align-items: end;
+    }
+
+    .header_bottom_me {
+        margin: 0 1rem;
+        position: relative;
+        overflow: visible;
+        width: auto;
+    }
+
+    .header_bottom_me img {
+        min-height: 450px;
+        width: 100%;
+    }
+
+    .me_img {
+        width: 100%;
+        height: auto;
+        max-width: 90%;
+        max-height: 100%;
+        object-fit: cover;
+        object-position: center;
+        margin-bottom: 1rem;
+        opacity: 0;
+        
+    }
+
+    .me_img_animation {
+        animation: me-animation .75s .3s ease-in-out forwards;
+    }
+
+    @keyframes me-animation {
+        to {
+            opacity: 1;
+        }
+    }
+
+    .header_bottom_column_1 {
+        grid-column: 8 / span 4;
+        grid-row: 1 / span 1;
+        margin-right: 3rem;
+        background-color: #FFE8E8;
+        overflow: hidden;
+        height: 0;
+    }
+
+
+    .header_bottom_column_2 {
+        grid-column: 10 / span 2;
+        grid-row: 1 / span 1;
+        background-color: var(--yellow);
+        overflow: hidden;
+        height: 0;
+    }
+
+    .column_1_animation {
+        animation: column_1_animation 2s forwards;
+        animation-timing-function: linear(0, 0.115 2.2%, 0.877 9.4%, 1.016 11.9%, 1.081 14.7%, 1.088 16%, 1.084 17.5%, 1.013 25.3%, 0.993 30.8%, 1.001 46.8%, 1);
+    }
+
+    .column_2_animation {
+        animation: column_2_animation 1.5s .3s ease-in-out forwards;
+        animation-timing-function: linear(0, 0.115 2.2%, 0.877 9.4%, 1.016 11.9%, 1.081 14.7%, 1.088 16%, 1.084 17.5%, 1.013 25.3%, 0.993 30.8%, 1.001 46.8%, 1);
+    }
+
+    @keyframes column_1_animation {
+        to {
+            height: 100%;
+        }
+    }
+
+    @keyframes column_2_animation {
+        to {
+            height: 40%;
+        }
+    }
+
+    .clint_img,
+    .birds_img {
+      position: absolute;
+      width:auto;
+      height: auto;
+      object-fit: cover;
+    }
+    
+    .clint_img {
+        top: -20%;
+        left: 0;
+    }
+
+    .clint_img::before {
+        content: url('../assets/aspa_small.svg');
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        z-index: 2;
+        animation: aspa_clint 1s ease-in-out infinite;
+    }
+
+    @keyframes aspa_clint {
+        0% {
+            transform: translateY(0%);
+        }
+        50% {
+            transform: translateY(70%);
+        }
+        100% {
+            transform: translateY(0%);
+        }
+    }
+
+
+
+    .birds_img {
+        top: -5%;
+        right: -10%;
+    }
+
+    .introduce {
+        grid-column: 1 / span 5;
+        grid-row: 1 / span 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:flex-start;
+        padding-left: 3rem;
+        margin-bottom: 50%;
+        position: relative;
+        margin-left: 15%;
+    }
+
+    .introduce::before {
+        content: url('../assets/comillas.svg');
+        position: absolute;
+        top: 1rem;
+        left: 12px;
+    }
+
+    .introduce p {
+        font-family: 'Brawler', serif;
+        font-size: 1.35rem;
+        line-height: 1.75;
+        color: var(--text);
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+</style>

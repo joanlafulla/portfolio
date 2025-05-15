@@ -1,13 +1,76 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import '../styles/global.css';
+
 import Layout from '../layouts/Layout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
+import Loading from '../components/Loading.astro';
+import Card from '../components/Card.astro';
 
 const pageTitle = 'Joan Lafulla - UX/UI Designer';
 const pageDescription = 'UX/UI Designer based in Barcelona, Spain. I create user-centered designs that are both functional and visually appealing.';
 const pageKeywords = 'UX, UI, Design, Joan Lafulla';
 const pageAuthor = 'Joan Lafulla';
+const headerText = 'A UX/UI designer with a little bit of frontend';
 ---
 
 <Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} author={pageAuthor}>
-	<Welcome />
+	<Loading />
+	<Topbar cluePosition="20%"/>
+	<Header headerText={headerText} />
 </Layout>
+
+<script>
+
+	const clue_1 = document.querySelector('.topBar-clue_1');
+	const clue_2 = document.querySelector('.topBar-clue_2');
+	const lafulla = document.querySelector('.lafulla');
+	const header_1 = document.querySelector('.header_bottom_column_1');
+	const header_2 = document.querySelector('.header_bottom_column_2');
+	const me = document.querySelector('.me_img');
+
+	const promiseLandingAnimation = () => new Promise((resolve) => {
+		setTimeout(() => {
+			const elemento = document.querySelector('.loading-page');
+			if (elemento) {
+			elemento.classList.add('loading-page_animation');
+			} else {
+			console.warn(`No se encontró ningún elemento con el selector: .loading-page`);
+			}
+
+			const loadingPageAnimation = document.querySelector('.loading-page_animation');
+			resolve(loadingPageAnimation);
+		}, 500);
+	});
+
+	promiseLandingAnimation().then((response) => {
+		const animation = response;
+
+		if(animation) {
+			console.log('Loading page animation started');
+			animation.addEventListener('animationend', () => {
+				if (clue_1) {
+					clue_1.classList.add('animation-clue-1');
+				}
+				if (clue_2) {
+					clue_2.classList.add('animation-clue-2');
+				}
+				if (lafulla) {
+					lafulla.classList.add('animation-lafulla');
+				}
+				if (header_1) {
+					header_1.classList.add('column_1_animation');
+				}
+				if (header_2) {
+					header_2.classList.add('column_2_animation');
+				}
+				if (me) {
+					me.classList.add('me_img_animation');
+				}
+			});
+		} else {
+			console.log("todavia no tenemos el animation");
+		} 
+	});
+
+	</script>

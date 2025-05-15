@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Brawler:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@900&display=swap');
+
+
+:root {
+    --white: #ffffff;
+    --light-gray: #F8F8F8;
+    --soft-yellow: #FFFDEB;
+    --yellow: #F6DD00;
+    --brown: #8E633C;
+    --dark-brown: #46392D;
+    --light-brown: #767160;
+    --gray: #5C584B;
+
+    --text: var(--dark-brown);
+    --header: var(--brown);
+}
+
+body {
+    background-color: var(--light-gray);
+    color: var(--text);
+    font-family: 'Brawler', sans-serif;
+    font-size: 1rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    interpolate-size: allow-keywords;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+  
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+    font: inherit;
+}
+  
+  /* 8. Avoid text overflows */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  
+  /* 9. Improve line wrapping */
+  p {
+    text-wrap: pretty;
+    line-height: 1.5;
+  }
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    text-wrap: balance;
+    font-family: "Alegreya Sans", sans-serif;
+    font-weight: 900;
+    color: var(--header);
+}       
