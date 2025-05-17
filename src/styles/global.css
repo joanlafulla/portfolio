@@ -12,6 +12,8 @@
     --dark-brown: #46392D;
     --light-brown: #767160;
     --gray: #5C584B;
+    --gold: #B5945E;
+    --coral: #FF676B;
 
     --text: var(--dark-brown);
     --header: var(--brown);
@@ -60,4 +62,18 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Alegreya Sans", sans-serif;
     font-weight: 900;
     color: var(--header);
-}       
+}  
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  }

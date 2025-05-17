@@ -1,0 +1,105 @@
+---
+import Badge from '../components/Badge.astro';
+import Card from '../components/Card.astro';
+---
+
+<section id="myWork">
+    <div class="myWork-contenedor">
+        <h1>Mis proyectos...</h1>
+        <div class="myWork-projects-list">
+            <Card 
+            title="Diseño de las Apps nativas de Fotocasa"
+            alt="Detalle del buscador de la App de Fotocasa"
+            imagePath="/src/assets/fc_app.png"
+            projectUrl="https://www.fotocasa.es/" >
+                <Badge badgeBG="var(--gold)">UX</Badge>
+                <Badge badgeBG="var(--gold)">UI</Badge>
+                <Badge badgeBG="var(--coral)">Apps</Badge>
+            </Card>
+            
+            <Card 
+            title="Dark Blob Cine"
+            alt="Cabecera de una entrada del blog darkblobcine.com"
+            imagePath="/src/assets/fc_app.png"
+            projectUrl="https://www.fotocasa.es/" >
+            <Badge badgeBG="var(--gold)">UX</Badge>
+            <Badge badgeBG="var(--gold)">UI</Badge>
+            <Badge badgeBG="var(--gold)">Coding</Badge>
+            <Badge badgeBG="var(--coral)">Apps</Badge>
+            </Card>
+            
+            <Card 
+            title="Búsqueda por trayecto"
+            alt="Pantalla de búsqueda por trayecto de la App de Fotocasa"
+            imagePath="/src/assets/fc_app.png"
+            projectUrl="https://www.fotocasa.es/" >
+            <Badge badgeBG="var(--gold)">Research</Badge>
+            <Badge badgeBG="var(--gold)">UX</Badge>
+            <Badge badgeBG="var(--gold)">UI</Badge>
+            <Badge badgeBG="var(--coral)">Apps</Badge>
+            <Badge badgeBG="var(--coral)">Web</Badge>
+            </Card>
+            
+            <Card 
+            title="Multi-theme Design System"
+            alt="Detalle de los tokens de diseño del un sistema multi-tema"
+            imagePath="/src/assets/fc_app.png"
+            projectUrl="https://www.fotocasa.es/" >
+            <Badge badgeBG="var(--gold)">UX</Badge>
+            <Badge badgeBG="var(--gold)">UI</Badge>
+            <Badge badgeBG="var(--coral)">Apps</Badge>
+            <Badge badgeBG="var(--coral)">Web</Badge>
+            </Card>
+
+            <Card 
+            title="Diseño de la App nativa de Habitaclia"
+            alt="Cabecera de un anuncio en la App de Habitaclia"
+            imagePath="/src/assets/fc_app.png"
+            projectUrl="https://www.fotocasa.es/" >
+            <Badge badgeBG="var(--gold)">UX</Badge>
+            <Badge badgeBG="var(--gold)">UI</Badge>
+            <Badge badgeBG="var(--coral)">Apps</Badge>
+            </Card>
+
+            <Card 
+            title="Contactar con duplicados en Fotocasa"
+            alt="Pantalla de contacto con duplicados en la App de Fotocasa"
+            imagePath="/src/assets/fc_app.png"
+            projectUrl="https://www.fotocasa.es/" >
+            <Badge badgeBG="var(--gold)">Research</Badge>
+            <Badge badgeBG="var(--gold)">UX</Badge>
+            <Badge badgeBG="var(--gold)">UI</Badge>
+            <Badge badgeBG="var(--coral)">Apps</Badge>
+            <Badge badgeBG="var(--coral)">Web</Badge>
+            </Card>
+        </div>
+    </div>
+</section>
+
+<style>
+    #myWork {
+        background-color: var(--yellow);
+    }
+
+    .myWork-contenedor {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 7.5rem 1.5rem;
+    }
+
+    .myWork-contenedor h1 {
+        font-size: clamp(2rem, -0.9255rem + 9.3617vw, 7.5rem);
+        font-family: 'Alegreya Sans', serif;
+        text-align: center;
+        color: var(--text);
+        font-weight: 900;
+    }
+
+    .myWork-projects-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 5rem;
+        padding: 3rem 1.5rem;
+        align-items: center;
+        margin-top: 4rem;
+    }

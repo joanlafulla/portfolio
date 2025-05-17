@@ -3,9 +3,10 @@ import '../styles/global.css';
 
 import Layout from '../layouts/Layout.astro';
 import Topbar from '../components/Topbar.astro';
-import Header from '../components/Header.astro';
+import Header from '../layouts/Header.astro';
 import Loading from '../components/Loading.astro';
-import Card from '../components/Card.astro';
+import Main from '../layouts/Main.astro';
+import Badge from '../components/Badge.astro';
 
 const pageTitle = 'Joan Lafulla - UX/UI Designer';
 const pageDescription = 'UX/UI Designer based in Barcelona, Spain. I create user-centered designs that are both functional and visually appealing.';
@@ -16,8 +17,9 @@ const headerText = 'A UX/UI designer with a little bit of frontend';
 
 <Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} author={pageAuthor}>
 	<Loading />
-	<Topbar cluePosition="20%"/>
+	<Topbar cluePosition="20%" />
 	<Header headerText={headerText} />
+	<Main />
 </Layout>
 
 <script>
@@ -28,6 +30,7 @@ const headerText = 'A UX/UI designer with a little bit of frontend';
 	const header_1 = document.querySelector('.header_bottom_column_1');
 	const header_2 = document.querySelector('.header_bottom_column_2');
 	const me = document.querySelector('.me_img');
+	const introduceP = document.querySelector('.introduce p');
 
 	const promiseLandingAnimation = () => new Promise((resolve) => {
 		setTimeout(() => {
@@ -66,6 +69,10 @@ const headerText = 'A UX/UI designer with a little bit of frontend';
 				}
 				if (me) {
 					me.classList.add('me_img_animation');
+				}
+
+				if (introduceP) {
+					introduceP.classList.add('introduce-animation-p');
 				}
 			});
 		} else {

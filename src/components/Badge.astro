@@ -1,0 +1,25 @@
+---
+const{ badgeBG } = Astro.props;
+
+---
+
+<div class="badge">
+  <slot></slot>
+</div>
+
+<style define:vars={{ badgeBG: badgeBG }}>
+  .badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Albert Sans', serif;
+    font-size: 0.875rem;
+    padding: 0 .5rem;
+    background-color: var(--badgeBG);
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: 900;
+    border: 0;
+    text-transform: uppercase;
+    height: 1.5rem;
+  }
