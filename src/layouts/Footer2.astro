@@ -1,6 +1,5 @@
 ---
 const { bgColor, textColor, template, barraColor, nombre="Joan Lafulla Ferrer", phone="677 220 869", mail="joanlafulla@hotmail.com", web="darkblobcine.com" } = Astro.props;
-import lookingUp from '../assets/me_looking_up.png';
 import lookingUp2 from '../assets/me_looking_up_6.png';
 import estrellasMarrones from '../assets/bottom_bar_parches.svg';
 import estrellasAmarillas from '../assets/bottom_bar_parches_yellow.svg';
@@ -29,8 +28,8 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
                 <li>{phone} <span class="material-symbols-outlined">smartphone</span></li>
             </ul>
             <ul>
-                <li>{mail} <span class="material-symbols-outlined">mail</span></li>
-                <li>{web} <span class="material-symbols-outlined">web</span></li>
+                <li><a href="mailto:joanlafulla@hotmail.com" class="footer-link">{mail}</a> <span class="material-symbols-outlined">mail</span></li>
+                <li><a href={`https://${web}`} class="footer-link">{web}</a> <span class="material-symbols-outlined">web</span></li>
             </ul>
         </div>
     </div>
@@ -41,7 +40,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
                 <li><a href={getRelativeLocaleUrl(currentLang, "apps_fotocasa")}>Fotocasa</a></li>
                 <li><a href={getRelativeLocaleUrl(currentLang, "darkblob")}>DarkBlobCine</a></li>
                 <li><a href={getRelativeLocaleUrl(currentLang, "apps_habitaclia")}>Habitaclia</a></li>
-                <li><a href={getRelativeLocaleUrl(currentLang, "trayecto")}>Trayecto</a></li>
+                <li><a href={getRelativeLocaleUrl(currentLang, "trayecto")}>Búsqueda por trayecto</a></li>
                 <li><a href={getRelativeLocaleUrl(currentLang, "duplicados")}>Duplicados</a></li>
                 <li><a href="#">Design System</a></li>
             </ul>
@@ -215,6 +214,19 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
         gap: .5rem;
         padding-bottom: .750rem;
     }
+
+    .footer-link {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        color: var(--textColor);
+        text-decoration: none;
+    }
+
+    .footer-link:hover {
+        text-decoration: underline;
+    }
+
 
     @media (max-width: 680px) {
 
