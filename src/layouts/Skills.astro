@@ -1,0 +1,160 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+import Skill from '../components/Skill.astro';
+import Avatar from '../components/Avatar.astro';
+---
+<section id="skills">
+    <div class="skills-contenedor">
+        <div class="skills-title">
+            <h1 class="header_section">{translateLabels('skills.title')}</h1> 
+        </div>
+        <div class="skills-list">
+            <Skill title="UX/UI Design" body={translateLabels('skills.design')} rate="99">
+                <Avatar 
+                    alt="Figma"
+                    imagePath='/src/assets/figma.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="Html 5"
+                    imagePath='/src/assets/html.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="CSS"
+                    imagePath='/src/assets/css.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="Javascript"
+                    imagePath='/src/assets/js.png'
+                >
+                </Avatar>
+            </Skill>
+            <Skill title="Proto & Interaction" body={translateLabels('skills.proto')} rate="99">
+                <Avatar 
+                    alt="Figma"
+                    imagePath='/src/assets/figma.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="Html 5"
+                    imagePath='/src/assets/html.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="CSS"
+                    imagePath='/src/assets/css.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="Javascript"
+                    imagePath='/src/assets/js.png'
+                >
+                </Avatar>
+            </Skill>
+            <Skill title="Design System" body={translateLabels('skills.ds')} rate="99">
+                <Avatar 
+                    alt="Html 5"
+                    imagePath='/src/assets/html.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="CSS"
+                    imagePath='/src/assets/css.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="Javascript"
+                    imagePath='/src/assets/js.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="Figma"
+                    imagePath='/src/assets/figma.png'
+                >
+                </Avatar>
+            </Skill>
+            <Skill title="HTML" body={translateLabels('skills.html')} rate="90">
+                <Avatar 
+                    alt="Html 5"
+                    imagePath='/src/assets/html.png'
+                >
+                </Avatar>
+            </Skill>
+            <Skill title="CSS" body={translateLabels('skills.css')} rate="90">
+                <Avatar 
+                    alt="Sass"
+                    imagePath='/src/assets/sass.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="CSS"
+                    imagePath='/src/assets/css.png'
+                >
+                </Avatar>
+            </Skill>
+            <Skill title="Javascript" body={translateLabels('skills.javascript')} rate="75">
+                <Avatar 
+                    alt="Astro.js"
+                    imagePath='/src/assets/astro.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="GSAP"
+                    imagePath='/src/assets/gsap.png'
+                >
+                </Avatar>
+                <Avatar 
+                    alt="Javascript"
+                    imagePath='/src/assets/js.png'
+                >
+                </Avatar>
+            </Skill>
+        </div>
+        
+    </div>
+</section>
+
+<style>
+
+    #skills {
+        background-color: var(--light-gray);
+    }
+
+    .skills-contenedor {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 7.5rem 1.5rem;
+    }
+
+    .skills-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .skills-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2.5rem;
+        padding: 3rem 1.5rem;
+        align-items: center;
+    }
+
+    @media (max-width: 1100px) {
+        .skills-contenedor {
+            padding: 5rem 1rem;
+        }
+        .skills-list {
+            grid-template-columns: repeat(auto-fit, minmax(328px, 1fr));
+            padding: 3rem 0;
+        }
+    }
+
+</style>

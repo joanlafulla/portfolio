@@ -1,10 +1,15 @@
 ---
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { getLangFromUrl, useTranslations, useTranslatedPath } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
 const{ headerText } = Astro.props;
 import clint from '../assets/clint_5.webp';
 import birds from '../assets/birds_2.webp';
 import me from '../assets/me.svg';
 import lafulla from '../assets/lafulla.svg';
-import Button from '../components/Button.astro';
 ---
 
 <header>
@@ -33,8 +38,10 @@ import Button from '../components/Button.astro';
                 </div>
             </div>
             <div class="introduce">
-                <p>Soy diseñador con <strong>más de 20 años de experiencia.</strong> Actualmente trabajo como UX/UI Designer en Adevinta Real Estate (Fotocasa & Habitaclia).</p>
-               <Button size="56px" backgroundColor="rgba(246, 221, 0, 1)" backgroundColorHover="rgba(246, 221, 0, 0.5)" color="var(--text)">Scroll para conocerme <span class="material-symbols-outlined">sentiment_calm</span></Button>
+                <p set:html={translateLabels('home.introduce')}/>
+               <div class="scroll-me">
+                    {translateLabels('home.scroll')} <span class="material-symbols-outlined">sentiment_calm</span>
+                </div>
             </div>
         </div>
     </div>
@@ -42,22 +49,23 @@ import Button from '../components/Button.astro';
 </header>
 
 <style>
+
     header {
-        height: calc(100vh - 56px);
+        position: relative;
+        height: calc(100vh - 16px);
         display: flex;
-        max-width: 1400px;
-        margin: 0 auto;
-        padding-top: calc(56px + 1rem);
+        padding-top: calc(56px + 4rem);
         overflow-y: hidden;
+        z-index: 1;
+        background-color: var(--light-gray);
     }
 
     .header_contenedor {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        width: 100%;
-        height: 100%;
-        margin: 0 1.5rem;
+        max-width: 1400px;
+        margin: 0 auto;
     }
 
     .header_top {
@@ -191,6 +199,7 @@ import Button from '../components/Button.astro';
         background-color: var(--yellow);
         overflow: hidden;
         height: 0;
+        border-radius: 0 1rem 0 0;
     }
 
     .column_1_animation {
@@ -221,6 +230,7 @@ import Button from '../components/Button.astro';
       width:auto;
       height: auto;
       object-fit: cover;
+      display: inline-block;
     }
     
     .clint_img {
@@ -269,6 +279,7 @@ import Button from '../components/Button.astro';
         margin-bottom: 50%;
         position: relative;
         margin-left: 15%;
+        margin-top: 2.5rem;
     }
 
     .introduce p::before {
@@ -280,7 +291,7 @@ import Button from '../components/Button.astro';
 
     .introduce p {
         font-family: 'Brawler', serif;
-        font-size: 1.35rem;
+        font-size: clamp(1.125rem, 0.857rem + 0.714vw, 1.5rem);
         line-height: 1.75;
         color: var(--text);
         font-weight: 400;
@@ -288,9 +299,17 @@ import Button from '../components/Button.astro';
         opacity: 0;
     }
 
-    .introduce button {
-        margin-top: 1rem;
-        opacity: 0;
+    .scroll-me {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding: 1rem;
+        border-top: 2px dashed var(--yellow);
+        border-bottom: 2px dashed var(--yellow);
+        font-family: 'Albert Sans', sans-serif;
+        font-weight: 600;
+        background-color: var(--soft-yellow);
     }
 
     .introduce-animation-p {
@@ -309,4 +328,202 @@ import Button from '../components/Button.astro';
         }
         
     }
+
+    @media (max-width: 1100px) {
+        header {
+            height: auto;
+        }
+
+        .header_contenedor {
+            margin: 0 1.5rem;
+        }
+
+        .scroll-me {
+            display: none;
+        }
+
+        .header_bottom {
+            min-height: auto;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: auto 1fr 1fr 1fr;
+        }
+
+        .header_bottom_column_1 {
+            grid-column: 3 / span 3;
+            grid-row: 2 / span 3;
+        }
+
+        .header_bottom_column_2 {
+            grid-column: 4 / span 2;
+            grid-row: 2 / span 3;
+        }
+
+        .me_pictures {
+            grid-row: 2 / span 3;
+            grid-column: 2 / span 4;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clint_img {
+            max-width: 45%;
+        }
+
+        .birds_img {
+            max-width: 35%;
+        }
+
+        .introduce {
+            grid-column: 2 / span 4;
+            grid-row: 1 / span 1;
+            margin-left: 0;
+            padding-left: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 30%;
+        }
+    }
+
+    @media (max-width: 680px) {
+
+        header {
+        padding-top: 48px;
+        }
+
+        .introduce {
+            grid-column: 1 / -1;
+            padding: 0 .5rem .5rem 2rem;
+        }
+
+        .lafulla_img {
+            width: 100%;
+        }
+
+        .header_top h1 {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 1.125rem;
+        }
+
+        .me_pictures {
+            grid-column: 1 / -1;
+        }
+
+        .header_bottom_me {
+            margin: 0;
+        }
+
+        .header_bottom_me img {
+            min-height: 380px;
+            max-width: 100%;
+        }
+
+        .me_img {
+            max-height: 380px;
+            max-width: 100%;;
+        }
+
+        .birds_img {
+        right: 0%;
+    }
+
+    }
 </style>
+
+<script>
+    const clue_1 = document.querySelector('.topBar-clue_1');
+	const clue_2 = document.querySelector('.topBar-clue_2');
+	const lafulla = document.querySelector('.lafulla');
+	const header_1 = document.querySelector('.header_bottom_column_1');
+	const header_2 = document.querySelector('.header_bottom_column_2');
+	const me = document.querySelector('.me_img');
+	const introduceP = document.querySelector('.introduce p');
+
+    const frases = [
+        {
+        titulo: "El Imperio Contraataca",
+        frase: "Hazlo o no lo hagas, pero no lo intentes"
+        },
+        {
+        titulo: "La vida secreta de Walter Mitty",
+        frase: "La vida comienza al final de tu zona de confort"
+        },
+        {
+        titulo: "La La Land",
+        frase: "No dejes que el miedo te impida a hacer lo que amas"
+        },
+        {
+        titulo: "La princesa prometida",
+        frase: "No sueñes tu vida, vive tu sueño"
+        },
+        {
+        titulo: "El mago de OZ",
+        frase: "No hay lugar como el hogar"
+        }
+    ]
+        
+    // Función para mostrar una frase aleatoria
+    function mostrarFraseAleatoria() {
+        const indiceAleatorio = Math.floor(Math.random() * frases.length);
+        const fraseSeleccionada = frases[indiceAleatorio];
+        const loadingFraseTitulo = document.querySelector('.loading-frase-titulo');
+        const loadingFraseFrase = document.querySelector('.loading-frase-frase');
+
+        if (loadingFraseTitulo) {
+            loadingFraseTitulo.textContent = `${fraseSeleccionada.titulo}`;    
+        } 
+
+        if (loadingFraseFrase) {
+            loadingFraseFrase.textContent = `${fraseSeleccionada.frase}`;
+        }
+    }
+
+    mostrarFraseAleatoria();
+
+	const promiseLandingAnimation = () => new Promise((resolve) => {
+		setTimeout(() => {
+			const elemento = document.querySelector('.loading-page');
+			if (elemento) {
+			elemento.classList.add('loading-page_animation');
+			} else {
+			console.warn(`No se encontró ningún elemento con el selector: .loading-page`);
+			}
+
+			const loadingPageAnimation = document.querySelector('.loading-page_animation');
+			resolve(loadingPageAnimation);
+		}, 2500);
+	});
+
+	promiseLandingAnimation().then((response) => {
+		const animation = response;
+
+		if(animation) {
+			//console.log('Loading page animation started');
+			animation.addEventListener('animationend', () => {
+				if (clue_1) {
+					clue_1.classList.add('animation-clue-1');
+				}
+				if (clue_2) {
+					clue_2.classList.add('animation-clue-2');
+				}
+				if (lafulla) {
+					lafulla.classList.add('animation-lafulla');
+				}
+				if (header_1) {
+					header_1.classList.add('column_1_animation');
+				}
+				if (header_2) {
+					header_2.classList.add('column_2_animation');
+				}
+				if (me) {
+					me.classList.add('me_img_animation');
+				}
+
+				if (introduceP) {
+					introduceP.classList.add('introduce-animation-p');
+				}
+			});
+		} else {
+			console.log("todavia no tenemos el animation");
+		} 
+	});
+</script>

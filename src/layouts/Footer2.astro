@@ -1,0 +1,264 @@
+---
+const { bgColor, textColor, template, barraColor, nombre="Joan Lafulla Ferrer", phone="677 220 869", mail="joanlafulla@hotmail.com", web="darkblobcine.com" } = Astro.props;
+import lookingUp from '../assets/me_looking_up.png';
+import lookingUp2 from '../assets/me_looking_up_6.png';
+import estrellasMarrones from '../assets/bottom_bar_parches.svg';
+import estrellasAmarillas from '../assets/bottom_bar_parches_yellow.svg';
+import { useTranslations } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
+---
+<footer>
+    <div class="footer-barra">
+         {(template === "yellow") &&
+             <span><img src={estrellasAmarillas.src} /></span>
+        }
+
+        {(template === "brown") &&
+             <span><img src={estrellasMarrones.src} /></span>
+        }
+       
+    </div>
+    <div class="footer-contacto">
+        <div class="footer-contacto-content">
+            <ul>
+                <li><strong>{nombre}</strong> <span class="material-symbols-outlined">mood</span></li>
+                <li>{phone} <span class="material-symbols-outlined">smartphone</span></li>
+            </ul>
+            <ul>
+                <li>{mail} <span class="material-symbols-outlined">mail</span></li>
+                <li>{web} <span class="material-symbols-outlined">web</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-images">
+        <div class="footer-images-nav">
+            <ul>
+                <li><a href={getRelativeLocaleUrl(currentLang, "")}>Inicio</a></li>
+                <li><a href={getRelativeLocaleUrl(currentLang, "apps_fotocasa")}>Fotocasa</a></li>
+                <li><a href={getRelativeLocaleUrl(currentLang, "darkblob")}>DarkBlobCine</a></li>
+                <li><a href={getRelativeLocaleUrl(currentLang, "apps_habitaclia")}>Habitaclia</a></li>
+                <li><a href={getRelativeLocaleUrl(currentLang, "trayecto")}>Trayecto</a></li>
+                <li><a href={getRelativeLocaleUrl(currentLang, "duplicados")}>Duplicados</a></li>
+                <li><a href="#">Design System</a></li>
+            </ul>
+        </div>
+        <div class="footer-images-contenedor">
+            <div class="column"></div>
+            <div class="footer-images-img">
+                <img src={lookingUp2.src} alt="Joan Lafulla looking up" class="footer-image-joan" />
+            </div>
+        </div>
+        
+    </div>
+</footer>
+
+<style define:vars={{ bgColor: bgColor, textColor: textColor, barraColor: barraColor }}>
+    footer {
+        height: auto;
+        background-color: var(--bgColor);
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 0;
+        opacity: 0;
+        overflow: hidden;
+    }
+
+    .footer-barra {
+        height: 3rem;
+        width: 40%;
+        background-color: var(--barraColor);
+        border-bottom-right-radius: 1rem;
+        position: relative;
+        overflow: visible;
+    }
+
+    .footer-barra span {
+        position: absolute;
+        top: 2px;
+        right: -146px;
+        width: 138px;
+        height: 48px;
+    }
+
+    .footer-contacto {
+        max-width: 1200px;
+        margin: 0 auto;
+        z-index: 100;
+        position: relative;
+    }
+
+    .footer-contacto-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        gap: 1rem;
+        color: var(--textColor);
+        padding: 6rem 0;
+    }
+
+    .footer-images {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+        gap: 2rem;
+        width: 100%;
+        position: relative;
+    }
+
+    .footer-images-contenedor {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        position: relative;
+    }
+
+    .footer-images-img {
+        background: #FFFDEB;
+        transform: rotate(15deg);
+        transform-origin: top left;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        box-shadow: 0px 10px 16px -3px rgba(0,0,0,0.1);
+        height: 100%;
+        position: relative;
+        z-index: 1;
+        top: 2rem;
+    }
+
+    .column {
+        width: 120px;
+        background: #FFE8E8;
+        transform: rotate(15deg);
+        transform-origin: top left;
+        border-top-left-radius: 1rem;
+        border-top-right-radius: 1rem;
+        box-shadow: 0px 10px 16px -3px rgba(0,0,0,0.1);
+        height: 320px;
+    }
+
+    .footer-image-joan {
+        max-width: 282px;
+        position: relative;
+        transform: rotate(-15deg);
+        top: -2rem;
+        left: 2.5rem;
+        max-width: 220px;
+    }
+
+
+    .footer-images-nav {
+        flex-grow: 1;
+        margin-bottom: 3rem;
+    }
+
+    .footer-images-nav ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 1.5rem;
+        font-size: 1.250rem;
+        font-family: 'Alegreya', sans-serif;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0;
+    }
+
+    .footer-images-nav ul li {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        font-size: 0.875rem;
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    .footer-images-nav ul li::after {
+        content:"•";
+        color: var(--textColor);
+        padding: 0 .750rem
+    }
+
+    .footer-images-nav ul li:last-child:after {
+        content:"";
+    }
+
+    .footer-images-nav ul li a {
+        color: var(--textColor);
+        text-decoration: none;
+    }
+
+    .footer-images-nav ul li a:hover {
+        text-decoration: underline;
+    }
+
+    .footer-contacto ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-left: 0;
+        font-size: 1.250rem;
+        font-family: 'Alegreya', sans-serif;
+    }
+
+    .footer-contacto ul li {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        padding-bottom: .750rem;
+    }
+
+    @media (max-width: 680px) {
+
+        .footer-images {
+        margin: 0;
+        flex-direction: column;
+        gap: 0.5rem;
+        }
+
+        .footer-images-nav {
+            display: none;
+        }
+
+        .footer-images-nav ul {
+            margin: 1rem 1.5rem;
+        }
+        
+        .footer-image-joan {
+            height: auto;
+            object-fit: cover;
+            position:relative;
+            max-width: 200px;
+        }
+
+        .footer-barra {
+            width: 50%;
+        }
+
+        .footer-contacto-content {
+            flex-direction: column;
+            gap: 0;
+            justify-content: center;
+            margin: 0 2rem;
+            padding: 4.5rem 0 2rem 0;
+        }
+
+        .footer-contacto ul {
+            width: 100%;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .footer-contacto ul li {
+            margin-bottom: 0;
+        }
+    }
+</style>

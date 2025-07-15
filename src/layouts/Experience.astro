@@ -1,0 +1,187 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import ExperienceItem from '../components/ExperienceItem.astro';
+import Jaws from '../assets/jaws.webp';
+import JawsSmall from '../assets/jaws_small.webp';
+---
+
+<section id="experience">
+    <div class="experience-contenedor">
+        <div class="experience-title">
+            <h1 class="header_section">{translateLabels('experiencia.title')}</h1>
+        </div>
+        <div class="experience-content">
+            <div class="experience-content-sidebar">
+                
+                <picture>
+                    <source media="(max-width: 1000px)" srcset={JawsSmall.src}>
+                    <img src={Jaws.src} alt="Tiburón (Jaws) es una de mis películas favoritas de todos los tiempos" class= "experience-sidebar-img"/>
+                </picture>
+                <div class="quote-movie">{translateLabels('experiencia.jaws')}<br /><span>Jaws (1975)</span></div>
+            </div>
+            <div class="experience-content-content">
+                <div class="experience-content-group">
+                        <ExperienceItem 
+                        title="Adevinta Spain"
+                        subtitle="Senior UX/UI - Head of UX - Frontend"
+                        body={translateLabels('experiencia.adevinta')}
+                        date={`2010 - ${translateLabels('experiencia.adevinta.actualidad')}`}
+                        class="myExperience-vertical">
+                        </ExperienceItem>
+
+                        <ExperienceItem 
+                        body={translateLabels('experiencia.adevinta.search')}
+                        date="2019"
+                        class="myExperience-horizontal">
+                        </ExperienceItem>
+
+                        <ExperienceItem 
+                        body={translateLabels('experiencia.adevinta.head')}
+                        date="2017"
+                        class="myExperience-horizontal">
+                        </ExperienceItem>
+
+                        <ExperienceItem 
+                        body={translateLabels('experiencia.adevinta.team')}
+                        date="2016"
+                        class="myExperience-horizontal">
+                        </ExperienceItem>
+
+                        <ExperienceItem 
+                        body={translateLabels('experiencia.adevinta.fe')}
+                        date="2014"
+                        class="myExperience-horizontal">
+                        </ExperienceItem>
+
+                        <ExperienceItem 
+                        body={translateLabels('experiencia.adevinta.anuntis')}
+                        date="2010"
+                        class="myExperience-horizontal">
+                    </ExperienceItem>
+                </div>
+
+                    <ExperienceItem 
+                    title="Darkblobcine.com"
+                    subtitle="UX/UI - Frontend - Content"
+                    body={translateLabels('experiencia.darkblob')}
+                    date={`2023 - ${translateLabels('experiencia.adevinta.actualidad')}`}
+                    class="myExperience-vertical">
+                    </ExperienceItem>
+
+                    <ExperienceItem 
+                    title="Almasoscuras.com"
+                    subtitle="UX/UI - Frontend - Content"
+                    body={translateLabels('experiencia.almas')}
+                    date="1998 - 2016"
+                    class="myExperience-vertical">
+                    </ExperienceItem>
+
+                    <ExperienceItem 
+                    title="Gumfaus Design Studio"
+                    subtitle="Graphic Designer"
+                    body={translateLabels('experiencia.gumfaus')}
+                    date="2001 - 2010"
+                    class="myExperience-vertical">
+                    </ExperienceItem>
+
+                    <ExperienceItem 
+                    title="Universitat Autònoma de Barcelona - UAB"
+                    subtitle={translateLabels('experiencia.estudios')}
+                    body={translateLabels('experiencia.uab')}
+                    date="1992 - 1996"
+                    class="myExperience-vertical">
+                    </ExperienceItem>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+
+    #experience {
+        background-color: var(--soft-yellow);
+        background-image: url(../assets/blob_1.svg);
+        background-repeat: no-repeat;
+        background-size: clamp(40%, 50%, 60%);
+        background-position: -12% -1%;
+    }
+
+    .experience-contenedor {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 7.5rem 1.5rem 6rem 1.5rem;
+    }
+
+    .experience-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .experience-content-sidebar {
+        color: var(--gray);
+        font-family: 'Albert Sans', sans-serif;
+        font-size: 1.125rem;
+    }
+
+    .experience-sidebar-img {
+        margin-top: 4rem;
+        transform: translateX(-10rem);
+        opacity: 0;
+    }
+
+    .experience-content {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        margin-top: 6rem;
+    }
+
+    .experience-content-group {
+        margin-bottom: 3rem;
+    }
+
+    .experience-content-sidebar {
+        flex: 1;
+    }
+    .experience-content-content {
+        flex: 1;
+    }
+
+    .experience-content-content .myExperience:last-child {
+        margin-bottom: 0;
+    }
+
+    .quote-movie {
+        max-width: 320px;
+        text-align: center;
+        margin-top: 1.5rem;
+        line-height: 1.5;
+        padding: 0 1rem;
+    }
+
+    .quote-movie span {
+        display: inline-block;
+        margin-top: .75rem;
+        font-weight: 900;
+        color: var(--dark-brown);
+    }
+
+    @media (max-width: 1000px) {
+        .experience-content {
+            flex-direction: column;
+            margin-top: 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .experience-content-content {
+            max-width: 450px;
+        }
+    }
+</style>

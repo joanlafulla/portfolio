@@ -1,0 +1,46 @@
+---
+const{ body } = Astro.props;
+const{ autor } = Astro.props;
+const{ job } = Astro.props;
+---
+
+<div class="quote">
+    <p set:html={body}/>
+    <div class="quote-autor">
+        {autor}
+        <span>{job}</span>
+    </div>
+</div>
+
+<style>
+    .quote {
+        color: var(--white);
+        font-size: 1.125rem;
+        position: relative;
+        font-weight: 400;
+    }
+
+    .quote p {
+        line-height: 1.6;
+    }
+
+    .quote p::before {
+        content: url('../assets/comillas_dark.svg');
+        position: absolute;
+        top: -0.75rem;
+        left: -2rem;
+    }
+
+    .quote-autor {
+        color: var(--yellow);
+        font-family: 'Albert Sans', sans-serif;
+    }
+
+    .quote-autor span {
+        display: block;
+        padding: 0.250rem;
+        font-weight: 600;
+    }
+</style>
+
+

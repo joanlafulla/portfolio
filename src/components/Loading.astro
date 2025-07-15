@@ -3,6 +3,10 @@
 ---
 <div class="loading-page">
     <span class="loader"></span>
+    <div id="loading-frase">
+        <p class="loading-frase-frase"></p>
+        <p class="loading-frase-titulo"></p>
+    </div>
 </div>
 
 <style>
@@ -14,6 +18,7 @@
         height: 100%;
         background-color: var(--yellow);
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         z-index: 9999;
@@ -21,6 +26,10 @@
 
     .loading-page_animation {
         animation: splash .3s ease-in forwards;
+    }
+
+    .loading-page.loading-page_animation #loading-frase {
+        display: none;
     }
 
     .loader {
@@ -46,6 +55,28 @@
 
     .loader::after {
         animation-delay: 1s;
+    }
+
+    #loading-frase {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1.5rem;
+    }
+
+    #loading-frase p {
+        margin-bottom: 0.25rem;
+    }
+
+    #loading-frase p.loading-frase-frase {
+        font-weight: 900;
+        font-size: 0.875rem;
+    }
+
+    #loading-frase p.loading-frase-titulo {
+        font-size: 0.75rem;
+        font-family: 'Albert Sans', sans-serif;
     }
 
     @keyframes animloader {

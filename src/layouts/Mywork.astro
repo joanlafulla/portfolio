@@ -1,17 +1,26 @@
 ---
+import { useTranslations } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import Badge from '../components/Badge.astro';
 import Card from '../components/Card.astro';
 ---
 
 <section id="myWork">
     <div class="myWork-contenedor">
-        <h1>Mis proyectos...</h1>
+        <div class="myWork-title">
+            <h1 class="header_section">{translateLabels('work.title')}</h1> 
+            <h2 class="header_section_subtitle">{translateLabels('work.subtitle')}</h2>
+        </div>
         <div class="myWork-projects-list">
             <Card 
-            title="Diseño de las Apps nativas de Fotocasa"
+            title={translateLabels('work.card1.title')}
             alt="Detalle del buscador de la App de Fotocasa"
-            imagePath="/src/assets/fc_app.png"
-            projectUrl="https://www.fotocasa.es/" >
+            imagePath="/src/assets/fc_app.webp"
+            projectUrl={getRelativeLocaleUrl(currentLang, "apps_fotocasa")}>
                 <Badge badgeBG="var(--gold)">UX</Badge>
                 <Badge badgeBG="var(--gold)">UI</Badge>
                 <Badge badgeBG="var(--coral)">Apps</Badge>
@@ -20,8 +29,8 @@ import Card from '../components/Card.astro';
             <Card 
             title="Dark Blob Cine"
             alt="Cabecera de una entrada del blog darkblobcine.com"
-            imagePath="/src/assets/fc_app.png"
-            projectUrl="https://www.fotocasa.es/" >
+            imagePath="/src/assets/dark_home.webp"
+            projectUrl={getRelativeLocaleUrl(currentLang, "darkblob")}>
             <Badge badgeBG="var(--gold)">UX</Badge>
             <Badge badgeBG="var(--gold)">UI</Badge>
             <Badge badgeBG="var(--gold)">Coding</Badge>
@@ -29,10 +38,10 @@ import Card from '../components/Card.astro';
             </Card>
             
             <Card 
-            title="Búsqueda por trayecto"
+            title={translateLabels('work.card3.title')}
             alt="Pantalla de búsqueda por trayecto de la App de Fotocasa"
-            imagePath="/src/assets/fc_app.png"
-            projectUrl="https://www.fotocasa.es/" >
+            imagePath="/src/assets/commute_home.png"
+            projectUrl={getRelativeLocaleUrl(currentLang, "trayecto")}>
             <Badge badgeBG="var(--gold)">Research</Badge>
             <Badge badgeBG="var(--gold)">UX</Badge>
             <Badge badgeBG="var(--gold)">UI</Badge>
@@ -42,9 +51,9 @@ import Card from '../components/Card.astro';
             
             <Card 
             title="Multi-theme Design System"
-            alt="Detalle de los tokens de diseño del un sistema multi-tema"
-            imagePath="/src/assets/fc_app.png"
-            projectUrl="https://www.fotocasa.es/" >
+            alt="Detalle de los tokens de diseño de un sistema multi-tema"
+            imagePath="/src/assets/system_home.webp"
+            projectUrl={getRelativeLocaleUrl(currentLang, "system")}>
             <Badge badgeBG="var(--gold)">UX</Badge>
             <Badge badgeBG="var(--gold)">UI</Badge>
             <Badge badgeBG="var(--coral)">Apps</Badge>
@@ -52,20 +61,20 @@ import Card from '../components/Card.astro';
             </Card>
 
             <Card 
-            title="Diseño de la App nativa de Habitaclia"
+            title={translateLabels('work.card5.title')}
             alt="Cabecera de un anuncio en la App de Habitaclia"
-            imagePath="/src/assets/fc_app.png"
-            projectUrl="https://www.fotocasa.es/" >
+            imagePath="/src/assets/habitaclia_home.png"
+            projectUrl={getRelativeLocaleUrl(currentLang, "apps_habitaclia")}>
             <Badge badgeBG="var(--gold)">UX</Badge>
             <Badge badgeBG="var(--gold)">UI</Badge>
             <Badge badgeBG="var(--coral)">Apps</Badge>
             </Card>
 
             <Card 
-            title="Contactar con duplicados en Fotocasa"
+            title={translateLabels('work.card6.title')}
             alt="Pantalla de contacto con duplicados en la App de Fotocasa"
-            imagePath="/src/assets/fc_app.png"
-            projectUrl="https://www.fotocasa.es/" >
+            imagePath="/src/assets/duplicates_home.png"
+            projectUrl={getRelativeLocaleUrl(currentLang, "duplicados")}>
             <Badge badgeBG="var(--gold)">Research</Badge>
             <Badge badgeBG="var(--gold)">UX</Badge>
             <Badge badgeBG="var(--gold)">UI</Badge>
@@ -79,6 +88,13 @@ import Card from '../components/Card.astro';
 <style>
     #myWork {
         background-color: var(--yellow);
+        --aspa-small-top: -24%;
+        --aspa-small-left: -9;
+        --aspa-large-top: -60%;
+        --aspa-large-left: -5%;
+        --aspa-small-rotation: 20deg;
+        --aspa-large-rotation: 10deg;
+        --aspa-opacity: 0;
     }
 
     .myWork-contenedor {
@@ -87,19 +103,28 @@ import Card from '../components/Card.astro';
         padding: 7.5rem 1.5rem;
     }
 
-    .myWork-contenedor h1 {
-        font-size: clamp(2rem, -0.9255rem + 9.3617vw, 7.5rem);
-        font-family: 'Alegreya Sans', serif;
-        text-align: center;
-        color: var(--text);
-        font-weight: 900;
+    .myWork-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .myWork-projects-list {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(328px, 1fr));
         gap: 5rem;
         padding: 3rem 1.5rem;
         align-items: center;
-        margin-top: 4rem;
     }
+
+    @media (max-width: 1100px) {
+        .myWork-contenedor {
+            padding: 5rem 1rem;
+        }
+        .myWork-projects-list {
+            padding: 3rem 0;
+            gap: 2.5rem;
+        }
+    }
+</style>

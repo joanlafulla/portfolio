@@ -19,12 +19,16 @@
     --header: var(--brown);
 }
 
+
 body {
     background-color: var(--light-gray);
     color: var(--text);
     font-family: 'Brawler', sans-serif;
     font-size: 1rem;
+    scroll-behavior: smooth;
 }
+
+
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -62,7 +66,26 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Alegreya Sans", sans-serif;
     font-weight: 900;
     color: var(--header);
-}  
+} 
+
+h1.header_section {
+    font-size: clamp(3.5rem, -0.9255rem + 9.3617vw, 7.5rem);
+    font-family: 'Alegreya Sans', serif;
+    text-align: center;
+    color: var(--text);
+    font-weight: 900;
+    position: relative;
+    display: inline-block;
+}
+
+h2.header_section_subtitle {
+    font-size: 1.5rem;
+    font-family: 'Albert Sans', serif;
+    text-align: center;
+    color: var(--text);
+    font-weight: 400;
+    margin: 1rem 0 1.5rem 0;
+}
 
 .material-symbols-outlined {
     font-family: 'Material Symbols Outlined';
@@ -76,4 +99,14 @@ h1, h2, h3, h4, h5, h6 {
     word-wrap: normal;
     white-space: nowrap;
     direction: ltr;
+  }
+
+  ul li,
+  ol li {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+  }
+
+  ol, ul {
+    padding-left: 1.5rem;
   }

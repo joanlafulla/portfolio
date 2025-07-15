@@ -1,0 +1,135 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Quote from '../components/Quote.astro';
+import { Image } from 'astro:assets';
+import blues from '../assets/blues.png';
+import truman from '../assets/truman.png';
+---
+
+<section id="quotes">
+    <div class="quotes-contenedor">
+        <h1>{translateLabels('quotes.title')}</h1>
+            <Image src={blues} alt="Blues Brothers" class="blues" />
+            <Image src={truman} alt="The Truman Show" class="truman" />
+            <ul class="quotes">
+                <li>
+                    <Quote
+                    body={translateLabels('quotes.quote1')}
+                    autor="Freddy" job="Frontend"/>
+                </li>
+                <li>
+                    <Quote
+                    body={translateLabels('quotes.quote2')}
+                    autor="Carlos" job="UX/UI Designer"/>
+                </li>
+                <li>
+                    <Quote
+                    body={translateLabels('quotes.quote3')}
+                    autor="Anne" job="Product Manager"/>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<style>
+    #quotes {
+        background-color: var(--dark-brown);
+        padding: 0 2rem;
+    }
+
+    .quotes-contenedor {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 7.5rem 1.5rem;
+        position: relative;
+    }
+
+    .quotes-contenedor .blues {
+        position: absolute;
+        top: -7rem;
+        right: 20%;
+        max-width: 157px;
+        height: auto;
+        opacity: 0;
+        pointer-events: none;
+        object-fit: cover;
+        object-position: center;
+        transform: translateY(5rem);
+        overflow: visible;
+        z-index: 1;
+    }
+
+    .quotes-contenedor .truman {
+        position: absolute;
+        top: -3rem;
+        right: 1rem;
+        max-width: 200px;
+        height: auto;
+        opacity: 0;
+        pointer-events: none;
+        object-fit: cover;
+        object-position: center;
+        transform: translateY(5rem);
+    }
+
+    .quotes-contenedor h1 {
+        color: var(--white);
+        font-family: 'Albert Sans', sans-serif;
+        font-size: 2rem;
+        margin-bottom: 4.5rem;
+    }
+
+    ul.quotes {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6rem;
+    }
+
+    @media (max-width: 1200px) {
+        ul.quotes {
+            gap: 3rem;
+        }
+    }
+
+    @media (max-width: 1000px) {
+
+        #quotes {
+            padding: 0;
+        }
+
+        ul.quotes {
+            grid-template-columns: 1fr;
+            max-width: 450px;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .quotes-contenedor h1 {
+            color: var(--white);
+            font-family: 'Albert Sans', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .quotes-contenedor .blues,
+        .quotes-contenedor .truman {
+            display: none;
+        }
+    }
+
+    @media (max-width: 580px) {
+        ul.quotes {
+            margin: 0 2rem;
+        }
+    }
+</style>

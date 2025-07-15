@@ -1,0 +1,102 @@
+---
+const { bgColor, textColor, template, nombre="Joan Lafulla Ferrer", phone="677 220 869", mail="joanlafulla@hotmail.com", web="darkblobcine.com" } = Astro.props;
+import lafulla from '../assets/lafulla.svg';
+import joan from '../assets/joan.svg';
+import lafullaYellow from '../assets/lafulla_yellow.svg';
+import joanYellow from '../assets/joan_yellow.svg';
+---
+<footer>
+    <div class="footer-contacto">
+        <ul>
+            <li><strong>{nombre}</strong> <span class="material-symbols-outlined">mood</span></li>
+            <li>{phone} <span class="material-symbols-outlined">smartphone</span></li>
+            <li>{mail} <span class="material-symbols-outlined">mail</span></li>
+            <li>{web} <span class="material-symbols-outlined">web</span></li>
+        </ul>
+    </div>
+    <div class="footer-images">
+        {(template === "yellow") &&
+            <img src={joan.src} alt="yellow" class="footer-image-joan" />
+            <img src={lafulla.src} alt="yellow" class="footer-image-lafulla" />
+        }
+
+        {(template === "brown") &&
+            <img src={joanYellow.src} alt="brown" class="footer-image-joan" />
+            <img src={lafullaYellow.src} alt="brown" class="footer-image-lafulla" />
+        }
+        
+    </div>
+</footer>
+
+<style define:vars={{ bgColor: bgColor, textColor: textColor }}>
+    footer {
+        height: auto;
+        background-color: var(--bgColor);
+        position: sticky;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 0;
+        opacity: 0;
+    }
+
+    .footer-contacto {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+        z-index: 100;
+        position: relative;
+        color: var(--textColor);
+    }
+
+    .footer-images {
+        position: relative;
+        margin: 2rem;
+    }
+
+    .footer-image-joan {
+        width: 33%;
+        height: auto;
+        object-fit: cover;
+        position:relative;
+        top: .5rem;
+    }
+
+    .footer-image-lafulla {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        position:relative;
+        top: 25%;
+    }
+
+    .footer-contacto ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-left: 0;
+        font-size: 1.250rem;
+        font-family: 'Alegreya', sans-serif;
+    }
+
+    .footer-contacto ul li {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        padding-bottom: .750rem;
+    }
+
+    @media (max-width: 680px) {
+
+        .footer-images {
+        margin: 0;
+        }
+        
+        .footer-image-joan {
+            width: 66%;
+            height: auto;
+            object-fit: cover;
+            position:relative;
+            top: .5rem;
+        }
+    }
+</style>

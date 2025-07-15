@@ -1,0 +1,64 @@
+---
+import { languageList } from '../i18n/ui';
+
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
+
+import es from '../assets/flags/es.svg';
+import ca from '../assets/flags/ca.svg';
+import en from '../assets/flags/en.svg';
+---
+
+<ul class="langPicker">
+  {Object.entries(languageList).map(([lang, label]) => {
+    if (lang === "es") {
+      return <li class="lg_es"><a href={translatePath('/', lang)}><img src={es.src} alt={label} /></a></li>;
+    }
+    if (lang === "ca") {
+      return <li class="lg_ca"><a href={translatePath('/', lang)}><img src={ca.src} alt={label} /></a></li>;
+    }
+    if (lang === "en") {
+      return <li class="lg_en"><a href={translatePath('/', lang)}><img src={en.src} alt={label} /></a></li>;
+    }
+  })}
+</ul>
+
+<script define:vars={{lang}}>
+    if (lang === "es") {
+        const currentLang = document.querySelector(".lg_es");
+        currentLang.style.opacity = "0.5";
+        currentLang.style.filter = "grayscale(100%)";
+    }
+    else if (lang === "ca") {
+        const currentLang = document.querySelector(".lg_ca");
+        currentLang.style.opacity = "0.5";
+        currentLang.style.filter = "grayscale(100%)";
+    }
+
+     else if (lang === "en") {
+        const currentLang = document.querySelector(".lg_en");
+        currentLang.style.opacity = "0.5";
+        currentLang.style.filter = "grayscale(100%)";
+    }
+</script>
+
+<style>
+    .langPicker {
+        list-style-type: none;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .langPicker img {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 100%;
+    }
+</style>
+

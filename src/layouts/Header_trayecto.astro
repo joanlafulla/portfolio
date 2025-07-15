@@ -1,0 +1,168 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+import Button from "../components/ButtonNavigation.astro"
+---
+
+<header class="navigation-default">
+	<nav>
+		<Button size="56px" backgroundColor="rgba(246,221,0,1)" backgroundColorHover="rgba(246,221,0,0.5)" color="var(--text)" href={getRelativeLocaleUrl(currentLang, "/")}><span class="material-symbols-outlined">arrow_back</span> {translateLabels('go.home')}</Button>
+	</nav>
+</header>
+<section id="trayecto">
+    <div class="trayecto_contenedor_1">
+        <div class="trayecto_content_1">
+            <div class="trayecto_content_1_content">
+                <h1>{translateLabels('trayecto.row1.title')}</h1>
+                <p>{translateLabels('trayecto.row1.body')}</p>
+            </div>
+        </div>
+    </div>
+</section> 
+
+<style>
+	header {
+		position: relative;
+        display: flex;
+        padding: 2rem 1.5rem;
+		z-index: 1;
+        background-color: var(--light-gray);
+    }
+
+        #trayecto {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 85vh;
+        background-color: var(--light-gray);
+    }
+
+    .trayecto_contenedor_1 {
+        position: relative;
+        background: url('../assets/trayecto/trayecto_bg.webp') no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        top: 2rem;
+        transition: all 1.3s ease-in-out;
+    }
+
+    .trayecto_contenedor_1.go {
+        opacity: 1;
+        top: 0;
+    }
+
+    .trayecto_content_1 {
+        max-width: 1200px;
+        margin: 0 auto;
+        height: 100%;
+        padding: 2rem;
+        z-index: 100;
+        position: relative;
+    }
+
+    .trayecto_content_1_content {
+        position: absolute;
+        background-color: rgba(246,221,0,.9);
+        color: var(--text);
+        padding: 2rem;
+        width: 40%;
+        bottom: 8%;
+        left: 2rem;
+        opacity: 0;
+        transition: all .8s ease-in-out;
+        transition-delay: .5s;
+    }
+
+    .trayecto_content_1_content.go {
+        bottom: 12%;
+        opacity: 1;
+    }
+
+    .trayecto_content_1_content h1 {
+        font-size: clamp(1.2rem, 1.5rem + 1vw, 2.5rem);
+        color: var(--text);
+    }
+
+    .trayecto_content_1_content p {
+        font-family: 'Albert Sans', serif;
+        font-size: 1.375rem;
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 980px) {
+        .trayecto_content_1_content {
+            width: 70%;
+            bottom: 4%;
+            left: 1rem;
+        }
+
+        .trayecto_content_1_content p {
+            font-size: 1.125rem;
+        }
+    }
+
+	@media (max-width: 680px) {
+        .topBar-clue-1 {
+			left: 20% !important;
+		}
+
+        .trayecto_content_1_content {
+            padding: 1.5rem;
+            width: calc(100% - 2rem);
+            left: 2rem;
+        }
+    }
+</style>
+
+<script>
+    const sectionBg = document.querySelector('.trayecto_contenedor_1');
+    const content = document.querySelector('.trayecto_content_1_content');
+    const clue_1 = document.querySelector('.topBar-clue_1');
+	const clue_2 = document.querySelector('.topBar-clue_2');
+
+	const promiseLandingAnimation = () => new Promise((resolve) => {
+		setTimeout(() => {
+			const elemento = document.querySelector('.loading-page');
+			if (elemento) {
+			elemento.classList.add('loading-page_animation');
+			} else {
+			console.warn(`No se encontró ningún elemento con el selector: .loading-page`);
+			}
+
+			const loadingPageAnimation = document.querySelector('.loading-page_animation');
+			resolve(loadingPageAnimation);
+		}, 500);
+	});
+
+	promiseLandingAnimation().then((response) => {
+		const animation = response;
+
+		if(animation) {
+			animation.addEventListener('animationend', () => {
+				if (sectionBg) {
+					sectionBg.classList.add('go');
+				}
+                if (content) {
+					content.classList.add('go');
+				}
+                if (clue_1) {
+					clue_1.classList.add('animation-clue-1');
+				}
+                if (clue_2) {
+					clue_2.classList.add('animation-clue-2');
+				}
+			});
+		} else {
+			console.log("todavia no tenemos el animation");
+		} 
+	});
+</script>

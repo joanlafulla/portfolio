@@ -1,14 +1,16 @@
 ---
 const{ cluePosition } = Astro.props;
+import LanguagePicker from '../components/LanguagePicker.astro';
 ---
 <div class="topBar">
     <div class="topBar-nav">
+        <LanguagePicker />
         <nav class="topBar-links">
             <a href="/docs">Quién soy</a>
             <a href="/blog">Mi trabajo</a>
         </nav>
     </div>
-    <div>
+    <div class="topBar-clues">
         <span class="topBar-clue_1"></span>
         <span class="topBar-clue_2"></span>
     </div>
@@ -25,9 +27,12 @@ const{ cluePosition } = Astro.props;
     .topBar-nav {
         width: 100%;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
         border-bottom: 1px solid rgba(118, 113, 96, 20%);
-        padding-right: 2.5em;
+        padding: 0 2rem;
+        position: fixed;
+        background-color: var(--white);
+        z-index: 2;
     }
 
     .topBar-links {
@@ -57,6 +62,14 @@ const{ cluePosition } = Astro.props;
         top: 56px;
     }
 
+    .topBar-clues {
+        position: relative;
+        background-color: var(--light-gray);
+        height: 16px;
+        z-index: 1;
+        margin-top: 57px;
+    }
+
     .topBar-clue_1,
     .topBar-clue_2 {
         position: absolute;
@@ -64,15 +77,16 @@ const{ cluePosition } = Astro.props;
         width: 300px;
         left: 0;
         opacity: 0;
+        z-index: 200;
     }
 
     .topBar-clue_1 {
-        top: 56px;
+        top: 0;
         background: var(--light-brown);
     }
 
     .topBar-clue_2 {
-        top:64px;
+        top:8px;
         margin-left: 56px;
         background: var(--yellow);
     }
@@ -96,6 +110,11 @@ const{ cluePosition } = Astro.props;
         .topBar-clue_1,
         .topBar-clue_2 {
             width: 150px;
+            left: 20% !important;
+        }
+
+        .topBar-nav {
+            padding-right: 1rem;
         }
     }
 </style>

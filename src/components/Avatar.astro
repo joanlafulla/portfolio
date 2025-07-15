@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+const { imagePath, alt } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}');
+if (!images[imagePath]) throw new Error(`"${imagePath}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif,webp}"`);
+---
+
+<div class="avatar">
+    <Image src={images[imagePath]()} alt={alt} width='48' height='48'/>
+</div>
+
+<style>
+    .avatar {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--light-gray);
+        border: 2px solid #EFECEB;
+        border-radius: 50%;
+    }
+</style>

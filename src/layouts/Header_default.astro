@@ -1,0 +1,68 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+import Button from "../components/ButtonNavigation.astro"
+---
+<header class="navigation-default">
+	<nav>
+		<Button size="56px" backgroundColor="rgba(246,221,0,1)" backgroundColorHover="rgba(246,221,0,0.5)" color="var(--text)" href={getRelativeLocaleUrl(currentLang, "/")}><span class="material-symbols-outlined">arrow_back</span> {translateLabels('go.home')}</Button>
+	</nav>
+</header>
+
+
+<script>
+    const clue_1 = document.querySelector('.topBar-clue_1');
+	const clue_2 = document.querySelector('.topBar-clue_2');
+
+	const promiseLandingAnimation = () => new Promise((resolve) => {
+		setTimeout(() => {
+			const elemento = document.querySelector('.loading-page');
+			if (elemento) {
+			elemento.classList.add('loading-page_animation');
+			} else {
+			console.warn(`No se encontró ningún elemento con el selector: .loading-page`);
+			}
+
+			const loadingPageAnimation = document.querySelector('.loading-page_animation');
+			resolve(loadingPageAnimation);
+		}, 500);
+	});
+
+	promiseLandingAnimation().then((response) => {
+		const animation = response;
+
+		if(animation) {
+			animation.addEventListener('animationend', () => {
+				if (clue_1) {
+					clue_1.classList.add('animation-clue-1');
+				}
+                if (clue_2) {
+					clue_2.classList.add('animation-clue-2');
+				}
+			});
+		} else {
+			console.log("todavia no tenemos el animation");
+		} 
+	});
+</script>
+
+<style>
+	header {
+		position: relative;
+        display: flex;
+        padding: 2rem 1.5rem;
+		z-index: 1;
+        background-color: var(--light-gray);
+    }
+
+	@media (max-width: 680px) {
+        .topBar-clue-1 {
+			left: 20% !important;
+		}
+    }
+</style>

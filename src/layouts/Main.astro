@@ -1,7 +1,14 @@
 ---
-import Mywork from '../layouts/Mywork.astro';
+
 ---
 
 <main>
-<Mywork />
+<slot>
 </main>
+
+<style>
+    main {
+        position: relative;
+        z-index: 1;
+    }
+</style>

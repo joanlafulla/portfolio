@@ -1,0 +1,90 @@
+---
+const { title, description, flexDirection, textAlign, imgWidth, imgWidthMobile, colorText, justifyImages, textDirection, imgSupport, imgSupportAlt, imgSupportClass } = Astro.props;
+const {class: className, ...rest} = Astro.props;
+---
+
+<div class:list={['item-product', className]} {...rest}>
+    <div class="item-product-text">
+         {(imgSupport) &&
+            <img src={imgSupport.src} alt={imgSupportAlt} class={imgSupportClass} />
+        }
+        <h1>{title}</h1>
+        <div class="item-product-text-content" set:html={description}></div>
+    </div>
+    <div class="item-product-images">
+        <slot />
+    </div>
+</div>
+
+<style define:vars={{ flexDirection: flexDirection, textAlign: textAlign, imgWidth: imgWidth, imgWidthMobile: imgWidthMobile, colorText: colorText, justifyImages: justifyImages, textDirection: textDirection }}> 
+    .item-product {
+        display: flex;
+        flex-direction: var(--flexDirection);
+        align-items: center;
+        justify-content: space-around;
+        gap: 4rem;
+        margin: 7.5rem 0;
+    }
+
+    .item-product-text {
+        text-align: var(--textAlign);
+        width: calc(100% - var(--imgWidth));
+        display: flex;
+        flex-direction: var(--textDirection);
+        gap: 2rem;
+    }
+
+    .item-product-text h1 {
+        font-size: clamp(1.5rem, 1.5rem + 1vw, 2.5rem);
+        font-weight: bold;
+        color: var(--colorText);
+        text-wrap: pretty;
+    }
+
+    .item-product-text-content {
+        font-size: clamp(1rem, 1rem + 0.5vw, 1.25rem);
+        color: var(--colorText);
+        font-family: 'Albert Sans', sans-serif;
+    }
+
+    .item-product-text a {
+        color: var(--colorText) !important;
+        text-decoration: underline;
+    }
+
+    .item-product-images {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        width: var(--imgWidth);
+        justify-content: var(--justifyImages);
+    }
+
+    .panot_logo {
+        max-width: 130px;
+    }
+
+
+    @media (max-width: 960px) {
+
+        .item-product-images {
+            width: var(--imgWidthMobile);
+        }
+
+        .item-product-text {
+        width: calc(100% - var(--imgWidthMobile));
+    }
+    }
+
+    @media (max-width: 680px) {
+
+        .item-product-images {
+            width: 100%;
+        }
+
+        .item-product-text {
+            width: 100%;
+            flex-direction: column !important;
+        }
+    }
+</style>
