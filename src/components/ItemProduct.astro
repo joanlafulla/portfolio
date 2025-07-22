@@ -1,5 +1,5 @@
 ---
-const { title, description, flexDirection, textAlign, imgWidth, imgWidthMobile, colorText, justifyImages, textDirection, imgSupport, imgSupportAlt, imgSupportClass } = Astro.props;
+const { mytitle, mydescription, flexDirection, textAlign, imgWidth, imgWidthMobile, colorText, justifyImages, textDirection, imgSupport, imgSupportAlt, imgSupportClass } = Astro.props;
 const {class: className, ...rest} = Astro.props;
 ---
 
@@ -8,8 +8,8 @@ const {class: className, ...rest} = Astro.props;
          {(imgSupport) &&
             <img src={imgSupport.src} alt={imgSupportAlt} class={imgSupportClass} />
         }
-        <h1>{title}</h1>
-        <div class="item-product-text-content" set:html={description}></div>
+        <h1>{mytitle}</h1>
+        <div class="item-product-text-content" set:html={mydescription}></div>
     </div>
     <div class="item-product-images">
         <slot />
