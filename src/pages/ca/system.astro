@@ -16,8 +16,10 @@ import ItemProduct from '../../components/ItemProduct.astro';
 import Main from '../../layouts/Main.astro';
 
 import system_1 from '../../assets/system/system_1.png';
+import system_1_small from '../../assets/system/system_1_small.png';
 import system_2 from '../../assets/system/system_2.png';
 import system_3 from '../../assets/system/system_3.png';
+import system_3_small from '../../assets/system/system_3_small.png';
 import system_4 from '../../assets/system/system_4.png';
 import panotLogo from '../../assets/system/panot_logo.svg';
 
@@ -50,8 +52,8 @@ const pageAuthor = 'Joan Lafulla';
                     justifyImages="center"
                     textDirection="column">
                     <picture>
-                        <source media="(max-width: 680px)" srcset={system_1.src}>
-                        <img src={system_1.src} alt="Página de inicio del blog darkblobcine.com"  class="img-large-extra"/>
+                        <source media="(max-width: 680px)" srcset={system_1_small.src}>
+                        <img src={system_1.src} alt="Variables de diseño en Figma"  class="img-large-extra"/>
                     </picture>
                     </ItemProduct> 
                 </div>
@@ -63,7 +65,7 @@ const pageAuthor = 'Joan Lafulla';
                     description={translateLabels('system.row2.body')}
                     imgSupport={panotLogo}
                     imgSupportAlt="Logo de Panot, el sistema de diseño de Fotocasa y Habitaclia"
-                    imgSupportClass="panot_logo"
+                    imgSupportClass="img_support_small"
                     class="row-2"
                     imgWidth="50%"
                     imgWidthMobile="45%"
@@ -72,10 +74,10 @@ const pageAuthor = 'Joan Lafulla';
                     colorText="var(--text)"
                     justifyImages="center"
                     textDirection="column">
-                    <img src={system_2.src} alt="Ficha de una película en DarkBlobcine.com" class="img-large-isolate" />
+                    <img src={system_2.src} alt="La Home de Habitaclia con el sistema de diseño de Panot aplicado." class="img-large-isolate" />
                     <picture>
-                        <source media="(max-width: 680px)" srcset={system_3.src}>
-                        <img src={system_3.src} alt="Ficha de una película en DarkBlobcine.com"  class="img-large-picture"/>
+                        <source media="(max-width: 680px)" srcset={system_3_small.src}>
+                        <img src={system_3.src} alt="La Home de Fotocasa con el sistema de diseño de Panot aplicado."  class="img-large-picture"/>
                     </picture>
                     </ItemProduct>
                 </div>
@@ -95,7 +97,7 @@ const pageAuthor = 'Joan Lafulla';
                     textDirection="column">
                     <picture>
                         <source media="(max-width: 680px)" srcset={system_4.src}>
-                        <img src={system_4.src} alt="Detalle de la página de inicio de darkblobcine.com"  class="img-large-isolate"/>
+                        <img src={system_4.src} alt="Ejemplos de tokens de diseño de Panot"  class="img-large-isolate"/>
                     </picture>
                     </ItemProduct> 
                 </div>
@@ -205,6 +207,11 @@ const pageAuthor = 'Joan Lafulla';
     }
 
     @media (max-width: 1100px) {
+
+        .item-product.row-1 {
+            margin-top: 1rem;
+        }
+
         .row-2 .img-large-isolate {
             display: none;
         }
@@ -241,6 +248,7 @@ const pageAuthor = 'Joan Lafulla';
             max-width: 282px;
             width: 100%;
             height: auto;
+            border-width: 1rem;
         }
 
         .item-product-text {

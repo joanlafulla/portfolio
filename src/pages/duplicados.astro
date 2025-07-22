@@ -90,10 +90,10 @@ const pageAuthor = 'Joan Lafulla';
                         textAlign="left"
                         justifyImages="center"
                         textDirection="column">
-                            <img src={duplicados3.src} alt="Ficha de una película en DarkBlobcine.com" class="img-large-isolate" />
+                            <img src={duplicados3.src} alt="Formulario de contacto de Fotocasa" class="img-large-isolate" />
                             <picture>
                              <source media="(max-width: 680px)" srcset={duplicados2_small.src}>
-                            <img src={duplicados2.src} alt="Ficha de una película en DarkBlobcine.com"  class="img-large-picture"/>
+                            <img src={duplicados2.src} alt="Pantalla en la que se da la opción al usuario de contactar con anuncios duplicados"  class="img-large-picture"/>
                             </picture>
                     </ItemProduct>
                 </div>
@@ -111,7 +111,7 @@ const pageAuthor = 'Joan Lafulla';
                         justifyImages="center"
                         colorText="var(--white)"
                         textDirection="column">
-                            <img src={duplicados4.src} alt="Ficha de una película en DarkBlobcine.com" class="img-large-isolate" />
+                            <img src={duplicados4.src} alt="Imagen de los protagonistas de la película Los gemelos golpean dos veces" class="img-large-isolate" />
                     </ItemProduct>
                 </div>
             </div>
@@ -280,8 +280,6 @@ const pageAuthor = 'Joan Lafulla';
 
     @media (max-width: 960px) {
 
-   
-
         .inseparables {
             display: none;
         }
@@ -301,6 +299,10 @@ const pageAuthor = 'Joan Lafulla';
             gap: 2rem;
             margin: 4.5rem 0 4.5rem 0;
         }
+
+        .item-product.row-1 {
+            margin-top: 1rem;
+        }
     }
 
     @media (max-width: 680px) {
@@ -310,21 +312,11 @@ const pageAuthor = 'Joan Lafulla';
             gap: 2.5rem;
         }
 
-        .apps_fotocasa_contenedor .item-product:first-child {
-            margin: 0;
-        }
-
-        #apps_fotocasa::after {
-            display: none;
-        }
-
-        .row-4 .markets::before {
-            display: none;
-        }
-
-        .row-4 .markets {
-            margin-left: 0;
-            align-items: center;
+        .row-4 .img-large-isolate {
+            max-width: 282px;
+            width: 100%;
+            height: auto;
+            border-width: 1rem;
         }
     }
 </style>

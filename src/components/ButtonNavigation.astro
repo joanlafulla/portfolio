@@ -6,19 +6,21 @@ const{ color } = Astro.props;
 const{ href } = Astro.props;
 const{ target="_self" } = Astro.props;
 const{ rel="prev" } = Astro.props;
+const{ width="auto" } = Astro.props;
 ---
 
 <a href={href} class="button" target={target} rel={rel}>
     <slot></slot>
 </a>
 
-<style define:vars={{ size: size, backgroundColor: backgroundColor, backgroundColorHover: backgroundColorHover, color: color }}>
+<style define:vars={{ size: size, backgroundColor: backgroundColor, backgroundColorHover: backgroundColorHover, color: color, width: width }}>
     .button {
         padding: 0 24px;
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 8px;
+        width: var(--width);
         height: var(--size);
         background-color: var(--backgroundColor);
         border-radius: 16px;

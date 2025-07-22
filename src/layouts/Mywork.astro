@@ -7,6 +7,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import Badge from '../components/Badge.astro';
 import Card from '../components/Card.astro';
+
 ---
 
 <section id="myWork">
@@ -40,7 +41,7 @@ import Card from '../components/Card.astro';
             <Card 
             title={translateLabels('work.card3.title')}
             alt="Pantalla de búsqueda por trayecto de la App de Fotocasa"
-            imagePath="/src/assets/commute_home.png"
+            imagePath="/src/assets/commute_home.webp"
             projectUrl={getRelativeLocaleUrl(currentLang, "trayecto")}>
             <Badge badgeBG="var(--gold)">Research</Badge>
             <Badge badgeBG="var(--gold)">UX</Badge>
@@ -63,7 +64,7 @@ import Card from '../components/Card.astro';
             <Card 
             title={translateLabels('work.card5.title')}
             alt="Cabecera de un anuncio en la App de Habitaclia"
-            imagePath="/src/assets/habitaclia_home.png"
+            imagePath="/src/assets/habitaclia_home.webp"
             projectUrl={getRelativeLocaleUrl(currentLang, "apps_habitaclia")}>
             <Badge badgeBG="var(--gold)">UX</Badge>
             <Badge badgeBG="var(--gold)">UI</Badge>
@@ -73,7 +74,7 @@ import Card from '../components/Card.astro';
             <Card 
             title={translateLabels('work.card6.title')}
             alt="Pantalla de contacto con duplicados en la App de Fotocasa"
-            imagePath="/src/assets/duplicates_home.png"
+            imagePath="/src/assets/duplicates_home.webp"
             projectUrl={getRelativeLocaleUrl(currentLang, "duplicados")}>
             <Badge badgeBG="var(--gold)">Research</Badge>
             <Badge badgeBG="var(--gold)">UX</Badge>

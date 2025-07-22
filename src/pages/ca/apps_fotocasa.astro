@@ -22,8 +22,7 @@ import fc3 from '../../assets/apps_fc/fc_3.png';
 import fc3_small from '../../assets/apps_fc/fc_3_small.png';
 import fc4 from '../../assets/apps_fc/fc_4.png';
 import fc5 from '../../assets/apps_fc/fc_5.png';
-import reviews from '../../assets/apps_fc/reviews.png';
-import valoraciones from '../../assets/apps_fc/valoraciones.png';
+import fc5_small from '../../assets/apps_fc/fc_5_small.png';
 import appStore from '../../assets/apps_fc/apps_store.png';
 import googlePlay from '../../assets/apps_fc/google_play.png';
 import Footer2 from '../../layouts/Footer2.astro';
@@ -51,11 +50,8 @@ const pageAuthor = 'Joan Lafulla';
                     textAlign="left"
                     justifyImages="center"
                     textDirection="column">
-                    <img src={fc1.src} alt="Fotocasa App - screen de inicio o Home" class="img-large-isolate" />
-                    <picture>
-                        <source media="(max-width: 680px)" srcset={fc1_small.src}>
-                        <img src={fc2.src} alt="Fotocasa App - detalle de un anuncio"  class="img-large-picture"/>
-                    </picture>
+                    <img src={fc1.src} alt="Fotocasa App - screen de inicio o Home" class="img-large-picture" />
+                    <img src={fc2.src} alt="Fotocasa App - detalle de un anuncio"  class="img-large-isolate"/>
                 </ItemProduct>
 
                 <ItemProduct
@@ -86,7 +82,7 @@ const pageAuthor = 'Joan Lafulla';
                     textDirection="column">
                     <img src={fc4.src} alt="Fotocasa App - screen de inicio o Home" class="img-large-isolate" />
                     <picture>
-                        <source media="(max-width: 680px)" srcset={fc5.src}>
+                        <source media="(max-width: 680px)" srcset={fc5_small.src}>
                         <img src={fc5.src} alt="Fotocasa App - detalle de un anuncio"  class="img-large-picture"/>
                     </picture>
                 </ItemProduct>

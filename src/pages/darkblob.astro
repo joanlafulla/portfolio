@@ -22,6 +22,7 @@ import dark_2_small from '../assets/darkblob/darkblob_2_small.png';
 import dark_3_large from '../assets/darkblob/darkblob_3_large.png';
 import dark_4 from '../assets/darkblob/darkblob_4.png';
 import dark_4_small from '../assets/darkblob/darkblob_4_small.png';
+import darkblobLogo from '../assets/darkblob/dark_blob_logo.svg';
 import Footer2 from '../layouts/Footer2.astro';
 
 import bigplus from '../assets/darkblob/bigplus.svg';
@@ -37,8 +38,9 @@ const pageAuthor = 'Joan Lafulla';
 	<Topbar cluePosition="30%" />
     <Header/>
 	<Main>
+        <img src={bigplus.src} alt="Logo de DarkBlobCine.com" class="bigplus" />
         <section id="darkblob">
-            <img src={bigplus.src} alt="Logo de DarkBlobCine.com" class="bigplus" />
+            
             <div class="darkblob_contenedor_1">
                 <div class="darkblob_content_1">
                     <ItemProduct
@@ -64,6 +66,9 @@ const pageAuthor = 'Joan Lafulla';
                     <ItemProduct
                     title={translateLabels('dark.row2.title')}
                     description={translateLabels('dark.row2.body')}
+                    imgSupport={darkblobLogo}
+                    imgSupportAlt="Logo de Darkblobcine, nuestro blog de cine"
+                    imgSupportClass="img_support_large"
                     class="row-2"
                     imgWidth="55%"
                     imgWidthMobile="45%"
@@ -245,6 +250,7 @@ const pageAuthor = 'Joan Lafulla';
             max-width: 282px;
             width: 100%;
             height: auto;
+            border-width: 1rem;
         }
 
         .item-product-text {

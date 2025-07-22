@@ -10,6 +10,7 @@ export const showDefaultLang = false;
 
 export const labels = {
   'es': {
+    'hablamos': '¿Hablamos?',
     'go.home': 'Volver al inicio',
     'home.claim': 'Un UX/UI con una pizca de Frontend',
     'home.introduce': 'Soy diseñador con <strong>más de 20 años de experiencia.</strong> Actualmente trabajo como UX/UI Designer en Adevinta Real Estate <strong>(Fotocasa & Habitaclia)</strong>.',
@@ -91,6 +92,7 @@ export const labels = {
     'system.row3.body': '<p style="margin-top: 0;">Paleta de colores, estilos de texto, efectos (sombras, radius...) e iconografía son elementos clave para dotar de personalidad propia a cualquier website.</p><p>En un Design System multi-theme, la correcta definición de estos tokens, en sus versiones <em>light & dark mode</em>, es un proceso vital para mantener esa diferenciación en el <em>look & feel</em> y la personalidad de cada uno de los portales.</p>',
   },
   'en': {
+    'hablamos': 'Get in touch?',
     'go.home': 'Go home',
     'home.claim': 'A UX/UI with a little bit of Frontend',
     'home.introduce': 'I am a designer with <strong>over 20 years of experience.</strong> I currently work as a UX/UI Designer at Adevinta Real Estate <strong>(Fotocasa & Habitaclia)</strong>.',
@@ -170,6 +172,7 @@ export const labels = {
     'system.row3.body': '<p style="margin-top: 0;">Color palette, text styles, effects (shadows, radius...) and iconography are key elements to give any website its own personality.</p><p>In a multi-theme Design System, the correct definition of these tokens, in their <em>light & dark mode</em> versions, is a vital process to maintain that differentiation in the <em>look & feel</em> and the personality of each of the websites.</p>',
   },
   'ca': {
+    'hablamos': 'Parlem?',
     'go.home': 'Tornar a l\'inici',
     'home.claim': 'Un UX/UI amb una mica de Frontend',
     'home.introduce': 'Sóc dissenyador amb <strong>més de 20 anys d\'experiència.</strong> Actualment treballo com UX/UI Designer a Adevinta Real Estate <strong>(Fotocasa & Habitaclia).</strong>',

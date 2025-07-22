@@ -28,7 +28,9 @@ body {
     scroll-behavior: smooth;
 }
 
-
+body:has(dialog[open]) {
+  overflow: hidden;
+}
 
 *, *::before, *::after {
     box-sizing: border-box;

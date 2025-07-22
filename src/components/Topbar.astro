@@ -1,13 +1,17 @@
 ---
 const{ cluePosition } = Astro.props;
 import LanguagePicker from '../components/LanguagePicker.astro';
+
+import { useTranslations } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 ---
 <div class="topBar">
     <div class="topBar-nav">
         <LanguagePicker />
         <nav class="topBar-links">
-            <a href="/docs">Quién soy</a>
-            <a href="/blog">Mi trabajo</a>
+            <button class="open-dialog"><span class="material-symbols-outlined">mood</span> {translateLabels('hablamos')}</button>
         </nav>
     </div>
     <div class="topBar-clues">
@@ -15,7 +19,6 @@ import LanguagePicker from '../components/LanguagePicker.astro';
         <span class="topBar-clue_2"></span>
     </div>
 </div>
-
 
 <style define:vars={{ cluePosition: cluePosition }}> 
     .topBar {
@@ -39,7 +42,7 @@ import LanguagePicker from '../components/LanguagePicker.astro';
         display: flex;
     }
 
-    .topBar-links a {
+    .topBar-links button {
         text-decoration: none;
         font-family: 'Albert Sans', serif;
         color: var(--text);
@@ -48,7 +51,12 @@ import LanguagePicker from '../components/LanguagePicker.astro';
         align-items: center;
         justify-content: center;
         padding: 0 1.5rem;
-        border-left: 1px dashed  var(--light-brown)
+        gap: 8px;
+        font-weight: 800;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
     }
 
     .topBar-links a:first-child {
@@ -106,6 +114,13 @@ import LanguagePicker from '../components/LanguagePicker.astro';
         }
     }
 
+    .hablamos-dialog {
+        max-width: 500px;
+        padding: 2rem;
+        border: none
+        background-color: var(--white);
+    }
+
     @media (width <= 780px) {
         .topBar-clue_1,
         .topBar-clue_2 {
@@ -115,7 +130,11 @@ import LanguagePicker from '../components/LanguagePicker.astro';
 
         .topBar-nav {
             padding-right: 1rem;
+            padding-left: 1rem;
         }
-    }
-</style>
 
+        .topBar-links a {
+            padding: 0 .5rem;
+        }
+}
+</style>

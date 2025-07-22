@@ -1,8 +1,17 @@
 ---
 const currentLang = Astro.currentLocale || 'es';
+import { useTranslations } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const { title, description } = Astro.props;
 const {class: className, ...rest} = Astro.props;
+import myFace from '../assets/joan_modal.png';
+import linkedin from '../assets/linkedin.png';
+import pdf from '../assets/pdf.png';
+import Button from "../components/ButtonNavigation.astro"
 ---
 
 <!doctype html>
@@ -18,11 +27,30 @@ const {class: className, ...rest} = Astro.props;
 		<meta name="og:title" content={title} />
 		<meta name="og:description" content={description} />
 		<meta name="og:type" content="website" />
-		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=arrow_back,mail,mood,sentiment_calm,smartphone,web" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=arrow_back,close_small,mail,mood,sentiment_calm,smartphone,web" rel="stylesheet" />
 		<title>{title}</title>
 	</head>
 	<body class={className}>
 		<slot />
+	<dialog id="meDialog" class="hablamos-dialog" closedby="any">
+		<div class="dialog-content">
+			<img src={myFace.src} alt="Foto de Joan Lafulla" class="myFace"/>
+			<div class="dialog-content-text">
+				<p>Si quieres conocerme mejor, no dudes en darme un toque a través del correo electrónico: <a href="mailto:joanlafulla@hotmail.com">joanlafulla@hotmail.com</a></p>
+				<p>También te dejo mi perfil en Linkedin y una versión más digerible de mi CV.</p>
+			</div>
+			<div class="dialog-buttons">
+				<Button width="100%" size="56px" backgroundColor="rgba(70,57,45,1)" backgroundColorHover="rgba(70,57,45,0.7)" color="var(--white)" href={getRelativeLocaleUrl(currentLang, "/")}>Mi perfil <img src={linkedin.src} alt="Mi perfil en Linkedin"/></Button>
+				<Button width="100%" size="56px" backgroundColor="rgba(70,57,45,1)" backgroundColorHover="rgba(70,57,45,0.7)" color="var(--white)" href={getRelativeLocaleUrl(currentLang, "/")}>Mi CV <img src={pdf.src} alt="Mi currículum vitae CV"/></Button>
+			</div>
+			
+			<div class="cerrar-dialog">
+				<form method="dialog">
+					<button class="closeDialog"><span class="material-symbols-outlined">close_small</span></button>
+				</form>
+			</div>
+		</div>
+	</dialog>
 	</body>
 </html>
 
@@ -37,4 +65,146 @@ const {class: className, ...rest} = Astro.props;
 	body.overflow-x-hidden {
 		overflow-x: hidden;
 	}
+
+	dialog.hablamos-dialog[open] {
+		scale: 1;
+		opacity: 1;
+		transition: all .3s ease-in-out;
+		@starting-style {
+			scale: 0;
+			opacity: 0;
+		}
+	}
+
+	dialog.hablamos-dialog {
+		max-width: 500px;
+		width: 90%;
+		aspect-ratio: 1/1;
+		padding: 4rem;
+		border: none;
+		border-top-left-radius: 3rem;
+		background-color: var(--yellow);
+		overflow: visible;
+		scale: 0;
+		opacity: 0;
+		transition: all .3s ease-in-out allow-discrete;
+	}
+
+	.hablamos-dialog::after {
+		content: "";
+		height: 69px;
+		width: 100%;
+		background-image: url('../assets/Blob_4.svg');
+		background-size: contain;
+		background-repeat: no-repeat;
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -68px;
+		display: inline-block;
+	}
+
+	.hablamos-dialog::before {
+        content: url('../assets/double_aspa.svg');
+        position: absolute;
+        bottom: 10%;
+        left: -16px;
+        z-index: 2;
+    }
+
+	.hablamos-dialog::backdrop {
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+
+	.dialog-content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: .5rem;
+		flex-direction: column;
+		color: var(--text);
+		font-family: 'Albert Sans', serif;
+		font-size: 1.2rem;
+		container-type: inline-size;
+	}
+
+	.dialog-content a{
+		color: var(--text) !important;
+		text-decoration: none;
+		font-weight: 800;
+	}
+
+	.dialog-content a:hover{
+		text-decoration: underline;
+	}
+
+	.cerrar-dialog {
+		position: absolute;
+		top: -1rem;
+		right: -1rem;
+	}
+
+	.cerrar-dialog button {
+		background-color: var(--dark-brown);
+		width: 56px;
+		height: 56px;
+		border: none;
+		outline: none;
+		border-radius: 50%;
+		color: var(--white);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		border: .25rem solid var(--yellow);
+	}
+
+	.cerrar-dialog button span {
+		font-size: 40px;
+	}
+
+	.myFace {
+		width: 140px;
+		height: 140px;
+		border-radius: 50%;
+		border: .75rem solid white;
+		box-shadow: 0px 10px 16px -3px rgba(0,0,0,0.1);
+	}
+
+	.dialog-buttons {
+		width: 100%;
+		display: flex;
+		gap: 1rem;
+		flex-direction: column;
+
+		@container (min-width:300px) {
+			flex-direction: row;
+		}
+	}
+
+	.dialog-buttons a.button {
+		width: 100%;
+	}
+
+	@media (max-width: 680px) {
+		dialog.hablamos-dialog {
+			padding: 2rem 1rem;
+		}
+
+		.hablamos-dialog::before {
+			content: '';
+			display: none;
+    	}
+	}
 </style>
+
+<script>
+const dialogOpenButton = document.querySelector('.open-dialog');
+const dialog = document.getElementById('meDialog');
+    
+dialogOpenButton?.addEventListener('click', (e) => {
+        e.preventDefault();
+        dialog?.showModal();
+});
+    
+</script>

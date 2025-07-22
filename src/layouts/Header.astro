@@ -52,9 +52,9 @@ import lafulla from '../assets/lafulla.svg';
 
     header {
         position: relative;
-        height: calc(100vh - 16px);
+        height: calc(100vh - 56px);
         display: flex;
-        padding-top: calc(56px + 4rem);
+        padding-top: 5rem;
         overflow-y: hidden;
         z-index: 1;
         background-color: var(--light-gray);
@@ -291,7 +291,7 @@ import lafulla from '../assets/lafulla.svg';
 
     .introduce p {
         font-family: 'Brawler', serif;
-        font-size: clamp(1.125rem, 0.857rem + 0.714vw, 1.5rem);
+        font-size: clamp(1rem, 0.857rem + 0.714vw, 1.5rem);
         line-height: 1.75;
         color: var(--text);
         font-weight: 400;
@@ -386,7 +386,7 @@ import lafulla from '../assets/lafulla.svg';
     @media (max-width: 680px) {
 
         header {
-        padding-top: 48px;
+        padding-top: 2rem;
         }
 
         .introduce {
@@ -490,7 +490,7 @@ import lafulla from '../assets/lafulla.svg';
 
 			const loadingPageAnimation = document.querySelector('.loading-page_animation');
 			resolve(loadingPageAnimation);
-		}, 2500);
+		}, 2000);
 	});
 
 	promiseLandingAnimation().then((response) => {
