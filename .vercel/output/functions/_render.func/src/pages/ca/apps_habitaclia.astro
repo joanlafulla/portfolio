@@ -1,0 +1,261 @@
+---
+import '../../styles/global.css';
+
+import { useTranslations } from '../../i18n/utils';
+import { languageList } from '../../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../layouts/Header_default.astro';
+import Topbar from '../../components/Topbar.astro';
+import Loading from '../../components/Loading.astro';
+import ItemProduct from '../../components/ItemProduct.astro';
+import Main from '../../layouts/Main.astro';
+import Footer2 from '../../layouts/Footer2.astro';
+
+import hb1 from '../../assets/apps_hab/hab_1.png';
+import hb2 from '../../assets/apps_hab/hab_2.png';
+import hb3 from '../../assets/apps_hab/hab_3.png';
+import hb3_small from '../../assets/apps_hab/hab_3_small.png';
+import hb4 from '../../assets/apps_hab/hab_4.png';
+import hb5 from '../../assets/apps_hab/hab_5.png';
+import reviews from '../../assets/apps_hab/reviews.png';
+import valoraciones from '../../assets/apps_hab/valoraciones.png';
+
+const pageTitle = 'Apps natives de Habitaclia';
+const pageDescription = 'Disseny UX/UI de les Apps natives de Habitaclia.';
+const pageKeywords = 'UX, UI, Fotocasa, apps nativas';
+const pageAuthor = 'Joan Lafulla';
+---
+
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} author={pageAuthor}>
+	<Loading />
+	<Topbar cluePosition="50%" />
+    <Header/>
+	<Main>
+        <section id="apps_fotocasa">
+            <div class="apps_fotocasa_contenedor">
+                <ItemProduct
+                    title={translateLabels('appsHB.row1.title')}
+                    description={translateLabels('appsHB.row1.body')}
+                    class="row-1"
+                    imgWidth="55%"
+                    imgWidthMobile="45%"
+                    flexDirection="row-reverse"
+                    textAlign="left"
+                    justifyImages="center"
+                    textDirection="column">
+                    <img src={hb1.src} alt="Fotocasa App - screen de inicio o Home" class="img-large-isolate" />
+                    <picture>
+                        <source media="(max-width: 680px)" srcset={hb2.src}>
+                        <img src={hb2.src} alt="Fotocasa App - detalle de un anuncio"  class="img-large-picture"/>
+                    </picture>
+                </ItemProduct>
+
+                <ItemProduct
+                    title={translateLabels('appsHB.row2.title')}
+                    description={translateLabels('appsHB.row2.body')}
+                    class="row-2"
+                    imgWidth="50%"
+                    imgWidthMobile="40%"
+                    flexDirection="row"
+                    textAlign="left"
+                    justifyImages="center"
+                    textDirection="column">
+                    <picture>
+                        <source media="(max-width: 680px)" srcset={hb5.src}>
+                        <img src={hb5.src} alt="Fotocasa App - detalle de un anuncio"  class="img-large-picture"/>
+                    </picture>
+                </ItemProduct>
+
+                <ItemProduct
+                    title={translateLabels('appsHB.row3.title')}
+                    description={translateLabels('appsHB.row3.body')}
+                    class="row-3"
+                    imgWidth="55%"
+                    imgWidthMobile="45%"
+                    flexDirection="row-reverse"
+                    textAlign="left"
+                    justifyImages="center"
+                    textDirection="column">
+                    <img src={hb4.src} alt="Fotocasa App - screen de inicio o Home" class="img-large-isolate" />
+                    <picture>
+                        <source media="(max-width: 680px)" srcset={hb3_small.src}>
+                        <img src={hb3.src} alt="Fotocasa App - detalle de un anuncio"  class="img-large-picture"/>
+                    </picture>
+                </ItemProduct>
+
+                <ItemProduct
+                    title={translateLabels('appsHB.row4.title')}
+                    description={translateLabels('appsHB.row4.body')}
+                    class="row-4"
+                    imgWidth="55%"
+                    imgWidthMobile="50%"
+                    flexDirection="row"
+                    textAlign="left"
+                    textDirection="column"
+                    >
+                    <div class="markets">
+                        <img src={reviews.src} alt="Fotocasa App - screen de inicio o Home" />    
+                        <img src={valoraciones.src} alt="Fotocasa App - screen de inicio o Home" />    
+                    </div>
+                </ItemProduct>
+            </div>
+        </section> 
+    </Main>
+    <Footer2
+		bgColor="var(--dark-brown)",
+		textColor="var(--yellow)",
+        barraColor="var(--yellow)",
+		template= "yellow"
+	/>
+</Layout>
+
+<style>
+
+    #apps_fotocasa {
+        background-color: var(--yellow);
+        position: relative;
+        z-index: 1;
+        padding: 2rem 0;
+    }
+
+    #apps_fotocasa::after {
+        content: url(../assets/Blob_3.svg);
+        position: absolute;
+        top: -100px;
+        right: 0;
+        z-index: 0;
+        width: fit-content;
+        height: auto;
+    }
+
+    .apps_fotocasa_contenedor {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        z-index: 100;
+        position: relative;
+    }
+
+    .img-large-isolate,
+    .img-large-picture {
+        width: auto;
+        height: fit-content;
+        border-radius: 3.125rem;
+        box-shadow: 0px 10px 16px -3px rgba(0,0,0,0.1);
+        border: 1rem solid var(--white);
+        object-fit: cover;
+        position: relative;
+        background: white;
+    }
+
+    .row-1 .img-large-isolate,
+    .row-3 .img-large-isolate {
+        top: -1rem;
+        width: 45%;
+    }
+
+    .row-1 .img-large-picture,
+    .row-3 .img-large-picture {
+        top: 3rem;
+        max-width: 282px;
+    }
+
+    .row-4 .markets {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin-left: 3rem;
+    }
+
+    .row-4 .markets img {
+        width: 100%;
+        height: auto;
+        max-width: 440px;
+        box-shadow: 0px 10px 16px -3px rgba(0,0,0,0.1);
+    }
+
+    .row-4 .markets::before {
+        content: url('../assets/apps_fc/llaves.svg');
+        position: absolute;
+        left: -48px;
+        z-index: 2;
+    }
+
+    @media (max-width: 960px) {
+        .row-1 .img-large-isolate,
+        .row-3 .img-large-isolate {
+            display: none;
+        }
+
+        .row-1 .img-large-picture,
+        .row-3 .img-large-picture {
+            top: 0;
+        }
+
+        .item-product {
+            gap: 2rem;
+            margin: 4.5rem 0;
+        }
+    }
+
+    @media (max-width: 680px) {
+
+        .item-product {
+            flex-direction: column-reverse;
+            gap: 2.5rem;
+        }
+
+        .apps_fotocasa_contenedor .item-product:first-child {
+            margin: 0;
+        }
+
+        #apps_fotocasa::after {
+            display: none;
+        }
+
+        .row-4 .markets::before {
+            display: none;
+        }
+
+        .row-4 .markets {
+            margin-left: 0;
+            align-items: center;
+        }
+    }
+</style>
+
+<script>
+// Selecciona el elemento al que quieres añadir el estilo
+const myFooter = document.querySelector('footer');
+
+window.addEventListener('scroll', () => {
+  // Calcula la posición actual del scroll
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  // Obtiene la altura total del documento
+  const alturaTotal = document.documentElement.scrollHeight - window.innerHeight;
+  // Calcula el porcentaje de scroll
+  const porcentajeScroll = (scrollTop / alturaTotal) * 100;
+
+  if (porcentajeScroll >= 50) {
+    // Añade un estilo, por ejemplo, una clase
+    if(myFooter) {
+        myFooter.style.opacity='1';
+    }
+    } else {
+    // Opcional: quita la clase si el scroll es menor al 50%
+    if(myFooter) {
+        myFooter.style.opacity='0';
+    }
+    
+  }
+});
+</script>
