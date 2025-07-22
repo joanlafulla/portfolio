@@ -54,7 +54,6 @@ import lafulla from '../assets/lafulla.svg';
         position: relative;
         height: calc(100vh - 56px);
         display: flex;
-        padding-top: 5rem;
         overflow-y: hidden;
         z-index: 1;
         background-color: var(--light-gray);
@@ -76,6 +75,7 @@ import lafulla from '../assets/lafulla.svg';
         grid-column: 2 / span 10;
         grid-column-gap: 1rem;
         max-height: 50vh;
+        padding-top: 5rem;
     }
 
     .header_top h1 {
@@ -385,8 +385,8 @@ import lafulla from '../assets/lafulla.svg';
 
     @media (max-width: 680px) {
 
-        header {
-        padding-top: 2rem;
+        .header_top {
+            padding-top: 2rem;
         }
 
         .introduce {
