@@ -1,0 +1,219 @@
+---
+import '../styles/global.css';
+
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { useTranslations } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+
+import Layout from '../layouts/Layout.astro';
+import Topbar from '../components/Topbar.astro';
+import Header from '../layouts/Header.astro';
+import Loading from '../components/Loading.astro';
+import Main from '../layouts/Main.astro';
+import Mywork from '../layouts/Mywork.astro';
+import Skills from '../layouts/Skills.astro';
+import Experience from '../layouts/Experience.astro';
+import Quotes from '../layouts/Quotes.astro';
+import Footer2 from '../layouts/Footer2.astro';
+import { escapeHTML } from 'astro/runtime/server/escape.js';
+
+const pageTitle = 'Joan Lafulla - UX/UI Designer';
+const pageDescription = 'UX/UI Designer con sede en Barcelona, España. Creando diseños centrados en el usuario que son funcionales y visualmente atractivos.';
+const pageKeywords = 'UX, UI, Design, Joan Lafulla';
+const pageAuthor = 'Joan Lafulla';
+---
+
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} author={pageAuthor}>
+	<Loading />
+	<Topbar cluePosition="20%" />
+	<Header headerText={translateLabels('home.claim')} />
+	<Main>
+		<Mywork />
+		<Experience />
+		<Skills />
+		<Quotes />
+	</Main>
+	<Footer2
+		bgColor="var(--yellow)",
+		textColor="var(--dark-brown)",
+		barraColor="var(--dark-brown)",
+		template= "brown"
+	/>
+</Layout>
+
+
+<script>
+import Lenis from 'lenis'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+const dialogOpenButton = document.querySelector('.open-dialog');
+const dialog = document.getElementById('meDialog');
+let tickerTimer = 1000;
+
+const lenis = new Lenis();
+lenis.on('scroll', ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+		lenis.raf(time * 1000);
+});
+
+
+gsap.ticker.lagSmoothing(0);
+
+let mm = gsap.matchMedia();
+
+const tl = gsap.timeline({
+		defaults: {
+		ease: 'power3.inOut', 
+		duration: .5
+		},
+		scrollTrigger: {
+			trigger: '#myWork',
+			start: 'top-=10% 60%',
+			end: 'bottom-=40%',
+			scrub: true,
+			once: true,
+			//markers: true
+		}
+});
+
+mm.add(
+  {
+    isMobile: '(max-width: 767px)', // por ejemplo, pantallas menores a 768px
+    isDesktop: '(min-width: 768px)', // pantallas iguales o mayores a 768px
+  },
+  (context) => {
+	let { isMobile, isDesktop } = context.conditions ?? {};
+
+    if (isMobile) {
+		tl 
+
+		.to('.card:nth-child(odd)', {
+			y: 0,
+			opacity: 1,
+			stagger: 0.2
+		})
+
+		.to('.card:nth-child(even)', {
+			y: 0,
+			opacity: 1,
+			stagger: 0.2,
+		}, '-=0.75')
+    }
+
+    if (isDesktop) {
+		tl 
+
+		.to('.card:nth-child(odd)', {
+			y: 0,
+			opacity: 1,
+			stagger: 0.2
+		})
+
+		.to('.card:nth-child(even)', {
+			y: 80,
+			opacity: 1,
+			stagger: 0.2,
+		}, '-=0.75')
+    }
+  }
+);
+
+	gsap.to('.experience-sidebar-img', {
+		scrollTrigger: {
+			trigger: '#experience',
+			start: 'top 40%',
+			toggleActions: 'play reverse play reverse'
+		},
+		duration: 1.5,
+		ease: 'power3.inOut',
+		x: 0,
+		opacity: 1
+	});
+
+	gsap.to('.blues', {
+		scrollTrigger: {
+			trigger: '#quotes',
+			start: 'top 80%',
+			once: true,
+		},
+		duration: 1.5,
+		ease: 'power3.inOut',
+		y: 0,
+		opacity: 1
+	});
+
+	gsap.to('.truman', {
+		scrollTrigger: {
+			trigger: '#quotes',
+			start: 'top 80%',
+			once: true,
+		},
+		duration: 1.5,
+		delay: 0.5,
+		ease: 'power3.inOut',
+		y: 0,
+		opacity: 1
+	}); 
+
+	function animarNumero(elemento: HTMLElement, x: number, duracion: number = 2000): void {
+    const inicio: number = 0;
+    const fin: number = x;
+    const pasos: number = 100; // número de pasos en la animación
+    const intervaloTiempo: number = duracion / pasos;
+    let valorActual: number = inicio;
+    const incremento: number = fin / pasos;
+
+    const intervalo = setInterval(() => {
+        valorActual += incremento;
+        if (valorActual >= fin) {
+        valorActual = fin;
+        clearInterval(intervalo);
+        }
+        elemento.textContent = Math.round(valorActual).toString() + "%";
+    }, intervaloTiempo);
+}
+
+	document.querySelectorAll('.skill-rate').forEach((element) => {
+		let rate = element.getAttribute("data-rate");
+		ScrollTrigger.create({
+			trigger: element,
+			onEnter: () => {
+				const numericRate = rate ? parseInt(rate, 10) : 0;
+				animarNumero(element as HTMLElement, numericRate);
+			},
+			once: true,
+		});
+	})
+
+
+	// Selecciona el elemento al que quieres añadir el estilo
+	const myFooter = document.querySelector('footer');
+
+	window.addEventListener('scroll', () => {
+	// Calcula la posición actual del scroll
+	const scrollTop = window.scrollY || document.documentElement.scrollTop;
+	// Obtiene la altura total del documento
+	const alturaTotal = document.documentElement.scrollHeight - window.innerHeight;
+	// Calcula el porcentaje de scroll
+	const porcentajeScroll = (scrollTop / alturaTotal) * 100;
+
+	if (porcentajeScroll >= 50) {
+		// Añade un estilo, por ejemplo, una clase
+		if(myFooter) {
+			myFooter.style.opacity='1';
+		}
+		} else {
+		// Opcional: quita la clase si el scroll es menor al 50%
+		if(myFooter) {
+			myFooter.style.opacity='0';
+		}
+		
+	}
+	});
+
+</script>
