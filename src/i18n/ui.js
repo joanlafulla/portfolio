@@ -11,6 +11,9 @@ export const showDefaultLang = false;
 export const labels = {
   'es': {
     'hablamos': '¿Hablamos?',
+    'hablamos.modal': '<p>Si quieres conocerme mejor, no dudes en darme un toque a través del correo electrónico: <a href="mailto:joanlafulla@hotmail.com"><strong>joanlafulla@hotmail.com</strong></a></p><p>También te dejo mi perfil en Linkedin y una versión más digerible de mi CV.</p>',
+    'hablamos.linkedin': 'Mi perfil',
+    'hablamos.cv': 'Mi CV',
     'go.home': 'Volver al inicio',
     'home.claim': 'Un UX/UI con una pizca de Frontend',
     'home.introduce': 'Soy diseñador con <strong>más de 20 años de experiencia.</strong> Actualmente trabajo como UX/UI Designer en Adevinta Real Estate <strong>(Fotocasa & Habitaclia)</strong>.',
@@ -93,6 +96,9 @@ export const labels = {
   },
   'en': {
     'hablamos': 'Get in touch?',
+    'hablamos.modal': '<p>If you want to get to know me better, feel free to contact me via email:  <a href="mailto:joanlafulla@hotmail.com"><strong>joanlafulla@hotmail.com</strong></a></p><p>I also leave you my LinkedIn profile and a more digestible version of my CV.</p>',
+    'hablamos.linkedin': 'My profile',
+    'hablamos.cv': 'My CV',
     'go.home': 'Go home',
     'home.claim': 'A UX/UI with a little bit of Frontend',
     'home.introduce': 'I am a designer with <strong>over 20 years of experience.</strong> I currently work as a UX/UI Designer at Adevinta Real Estate <strong>(Fotocasa & Habitaclia)</strong>.',
@@ -173,6 +179,9 @@ export const labels = {
   },
   'ca': {
     'hablamos': 'Parlem?',
+    'hablamos.modal': '<p>Si em vols conèixer millor, no dubtis a donar-me un toc a través del correu electrònic: <a href="mailto:joanlafulla@hotmail.com"><strong>joanlafulla@hotmail.com</strong></a></p><p>També et deixo el meu perfil a Linkedin i una versió més digerible del meu CV.</p>',
+    'hablamos.linkedin': 'El meu perfil',
+    'hablamos.cv': 'El meu CV',
     'go.home': 'Tornar a l\'inici',
     'home.claim': 'Un UX/UI amb una mica de Frontend',
     'home.introduce': 'Sóc dissenyador amb <strong>més de 20 anys d\'experiència.</strong> Actualment treballo com UX/UI Designer a Adevinta Real Estate <strong>(Fotocasa & Habitaclia).</strong>',

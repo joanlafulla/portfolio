@@ -1,7 +1,7 @@
 ---
-const currentLang = Astro.currentLocale || 'es';
 import { useTranslations } from '../i18n/utils';
 import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
 const translateLabels = useTranslations(currentLang as keyof typeof languageList);
 
 import { getRelativeLocaleUrl } from 'astro:i18n';
@@ -35,13 +35,10 @@ import Button from "../components/ButtonNavigation.astro"
 	<dialog id="meDialog" class="hablamos-dialog" closedby="any">
 		<div class="dialog-content">
 			<img src={myFace.src} alt="Foto de Joan Lafulla" class="myFace"/>
-			<div class="dialog-content-text">
-				<p>Si quieres conocerme mejor, no dudes en darme un toque a través del correo electrónico: <a href="mailto:joanlafulla@hotmail.com">joanlafulla@hotmail.com</a></p>
-				<p>También te dejo mi perfil en Linkedin y una versión más digerible de mi CV.</p>
-			</div>
+			<div class="dialog-content-text" set:html={translateLabels('hablamos.modal')}></div>
 			<div class="dialog-buttons">
-				<Button width="100%" size="56px" backgroundColor="rgba(70,57,45,1)" backgroundColorHover="rgba(70,57,45,0.7)" color="var(--white)" href={getRelativeLocaleUrl(currentLang, "/")}>Mi perfil <img src={linkedin.src} alt="Mi perfil en Linkedin"/></Button>
-				<Button width="100%" size="56px" backgroundColor="rgba(70,57,45,1)" backgroundColorHover="rgba(70,57,45,0.7)" color="var(--white)" href={getRelativeLocaleUrl(currentLang, "/")}>Mi CV <img src={pdf.src} alt="Mi currículum vitae CV"/></Button>
+				<Button width="100%" size="56px" backgroundColor="rgba(70,57,45,1)" backgroundColorHover="rgba(70,57,45,0.7)" color="var(--white)" href="https://www.linkedin.com/in/joan-lafulla-ferrer" target="_blank">{translateLabels('hablamos.linkedin')} <img src={linkedin.src} alt="Mi perfil en Linkedin"/></Button>
+				<Button width="100%" size="56px" backgroundColor="rgba(70,57,45,1)" backgroundColorHover="rgba(70,57,45,0.7)" color="var(--white)" href={getRelativeLocaleUrl(currentLang, "/")}>{translateLabels('hablamos.cv')} <img src={pdf.src} alt="Mi currículum vitae CV"/></Button>
 			</div>
 			
 			<div class="cerrar-dialog">
