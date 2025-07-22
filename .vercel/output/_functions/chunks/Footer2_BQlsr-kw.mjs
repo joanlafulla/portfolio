@@ -1,9 +1,9 @@
-import { c as createComponent, a as createAstro, e as defineStyleVars, m as maybeRenderHead, f as addAttribute, g as renderSlot, d as renderTemplate, B as renderHead, u as unescapeHTML, r as renderComponent, b as renderScript, s as spreadAttributes, C as defineScriptVars } from './astro/server_BqnpntHy.mjs';
+import { c as createComponent, a as createAstro, e as defineStyleVars, m as maybeRenderHead, f as addAttribute, g as renderSlot, d as renderTemplate, l as renderHead, u as unescapeHTML, r as renderComponent, b as renderScript, s as spreadAttributes, n as defineScriptVars } from './astro/server_iE4Xfp6e.mjs';
 import 'kleur/colors';
 /* empty css                                 */
 import 'clsx';
 /* empty css                                 */
-import { t as toRoutingStrategy, g as getLocaleRelativeUrl } from './utils_ci4OpFix.mjs';
+import { t as toRoutingStrategy, g as getLocaleRelativeUrl } from './utils_CN7a1k35.mjs';
 
 const languageList = {
     es: "Español",

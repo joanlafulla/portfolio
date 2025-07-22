@@ -1,10 +1,10 @@
-import { c as createComponent, a as createAstro, r as renderComponent, b as renderScript, d as renderTemplate, m as maybeRenderHead, f as addAttribute } from '../../chunks/astro/server_BqnpntHy.mjs';
+import { c as createComponent, a as createAstro, r as renderComponent, b as renderScript, d as renderTemplate, m as maybeRenderHead, f as addAttribute } from '../../chunks/astro/server_iE4Xfp6e.mjs';
 import 'kleur/colors';
 /* empty css                                            */
-import { a as $$Layout, b as $$Loading, c as $$Topbar, d as $$Main, u as useTranslations, e as $$Footer2 } from '../../chunks/Footer2_0JUnMB6y.mjs';
-import { $ as $$HeaderDefault } from '../../chunks/Header_default_Cy9HIGBM.mjs';
-import { $ as $$ItemProduct } from '../../chunks/ItemProduct_Bntk2cyo.mjs';
-import { b as bigplus, d as dark_1_small, a as dark_1, c as dark_3_large, e as dark_2_small, f as dark_2_large, g as dark_4_small, h as dark_4 } from '../../chunks/bigplus_D5gLrjp_.mjs';
+import { a as $$Layout, b as $$Loading, c as $$Topbar, d as $$Main, u as useTranslations, e as $$Footer2 } from '../../chunks/Footer2_BQlsr-kw.mjs';
+import { $ as $$HeaderDefault } from '../../chunks/Header_default_DxRZffVP.mjs';
+import { $ as $$ItemProduct } from '../../chunks/ItemProduct_c0eAS3iK.mjs';
+import { b as bigplus, d as dark_1_small, a as dark_1, c as dark_3_large, e as dark_2_small, f as dark_2_large, g as dark_4_small, h as dark_4 } from '../../chunks/bigplus_N_tjMGk3.mjs';
 /* empty css                                       */
 export { r as renderers } from '../../chunks/internal_BsTt5pTQ.mjs';
 

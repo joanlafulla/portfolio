@@ -2,9 +2,6 @@
 	"version": 3,
 	"routes": [
 		{
-			"handle": "filesystem"
-		},
-		{
 			"src": "^/_astro/(.*)$",
 			"headers": {
 				"cache-control": "public, max-age=31536000, immutable"
@@ -12,96 +9,113 @@
 			"continue": true
 		},
 		{
-			"src": "^/_server-islands/([^/]+?)/?$",
+			"handle": "filesystem"
+		},
+		{
+			"src": "^\\/_server-islands\\/([^/]+?)\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/_image/?$",
+			"src": "^\\/_image\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/apps_fotocasa/?$",
+			"src": "^\\/apps_fotocasa\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/apps_habitaclia/?$",
+			"src": "^\\/apps_habitaclia\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/ca/apps_fotocasa/?$",
+			"src": "^\\/ca\\/apps_fotocasa\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/ca/apps_habitaclia/?$",
+			"src": "^\\/ca\\/apps_habitaclia\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/ca/darkblob/?$",
+			"src": "^\\/ca\\/darkblob\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/ca/duplicados/?$",
+			"src": "^\\/ca\\/duplicados\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/ca/system/?$",
+			"src": "^\\/ca\\/system\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/ca/trayecto/?$",
+			"src": "^\\/ca\\/trayecto\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/ca/?$",
+			"src": "^\\/ca\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/darkblob/?$",
+			"src": "^\\/darkblob\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/duplicados/?$",
+			"src": "^\\/duplicados\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/en/apps_fotocasa/?$",
+			"src": "^\\/en\\/apps_fotocasa\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/en/apps_habitaclia/?$",
+			"src": "^\\/en\\/apps_habitaclia\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/en/darkblob/?$",
+			"src": "^\\/en\\/darkblob\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/en/duplicados/?$",
+			"src": "^\\/en\\/duplicados\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/en/system/?$",
+			"src": "^\\/en\\/system\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/en/trayecto/?$",
+			"src": "^\\/en\\/trayecto\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/en/?$",
+			"src": "^\\/en\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/system/?$",
+			"src": "^\\/system\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/trayecto/?$",
+			"src": "^\\/trayecto\\/?$",
 			"dest": "_render"
 		},
 		{
-			"src": "^/$",
+			"src": "^\\/$",
 			"dest": "_render"
 		}
-	]
+	],
+	"images": {
+		"sizes": [
+			640,
+			750,
+			828,
+			1080,
+			1200,
+			1920,
+			2048,
+			3840
+		],
+		"domains": [],
+		"remotePatterns": []
+	}
 }

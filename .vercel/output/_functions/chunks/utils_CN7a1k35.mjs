@@ -1,5 +1,5 @@
 import { a as appendForwardSlash, j as joinPaths } from './path_BuZodYwm.mjs';
-import { A as AstroError, h as MissingLocale, R as REROUTE_DIRECTIVE_HEADER, i as i18nNoLocaleFoundInPath } from './astro/server_BqnpntHy.mjs';
+import { A as AstroError, M as MissingLocale, R as REROUTE_DIRECTIVE_HEADER, i as i18nNoLocaleFoundInPath } from './astro/server_iE4Xfp6e.mjs';
 import 'kleur/colors';
 import 'clsx';
 

@@ -1,6 +1,6 @@
-import { c as createComponent, a as createAstro, m as maybeRenderHead, r as renderComponent, b as renderScript, d as renderTemplate } from './astro/server_BqnpntHy.mjs';
+import { c as createComponent, a as createAstro, m as maybeRenderHead, r as renderComponent, b as renderScript, d as renderTemplate } from './astro/server_iE4Xfp6e.mjs';
 import 'kleur/colors';
-import { u as useTranslations, g as getRelativeLocaleUrl, $ as $$ButtonNavigation } from './Footer2_0JUnMB6y.mjs';
+import { u as useTranslations, g as getRelativeLocaleUrl, $ as $$ButtonNavigation } from './Footer2_BQlsr-kw.mjs';
 /* empty css                            */
 
 const $$Astro = createAstro();

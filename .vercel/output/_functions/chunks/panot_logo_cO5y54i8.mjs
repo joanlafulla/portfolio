@@ -1,4 +1,4 @@
-import { f as createSvgComponent } from './Footer2_0JUnMB6y.mjs';
+import { f as createSvgComponent } from './Footer2_BQlsr-kw.mjs';
 
 const system_1 = new Proxy({"src":"/_astro/system_1.B2s9BOMg.png","width":1050,"height":650,"format":"png"}, {
 						get(target, name, receiver) {

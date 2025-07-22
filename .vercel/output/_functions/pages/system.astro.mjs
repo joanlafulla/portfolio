@@ -1,10 +1,10 @@
-import { c as createComponent, a as createAstro, r as renderComponent, b as renderScript, d as renderTemplate, m as maybeRenderHead, f as addAttribute } from '../chunks/astro/server_BqnpntHy.mjs';
+import { c as createComponent, a as createAstro, r as renderComponent, b as renderScript, d as renderTemplate, m as maybeRenderHead, f as addAttribute } from '../chunks/astro/server_iE4Xfp6e.mjs';
 import 'kleur/colors';
 /* empty css                                         */
-import { a as $$Layout, b as $$Loading, c as $$Topbar, d as $$Main, u as useTranslations, e as $$Footer2 } from '../chunks/Footer2_0JUnMB6y.mjs';
-import { $ as $$HeaderDefault } from '../chunks/Header_default_Cy9HIGBM.mjs';
-import { $ as $$ItemProduct } from '../chunks/ItemProduct_Bntk2cyo.mjs';
-import { s as system_1_small, a as system_1, p as panotLogo, b as system_2, c as system_3_small, d as system_3, e as system_4 } from '../chunks/panot_logo_BYuVoerr.mjs';
+import { a as $$Layout, b as $$Loading, c as $$Topbar, d as $$Main, u as useTranslations, e as $$Footer2 } from '../chunks/Footer2_BQlsr-kw.mjs';
+import { $ as $$HeaderDefault } from '../chunks/Header_default_DxRZffVP.mjs';
+import { $ as $$ItemProduct } from '../chunks/ItemProduct_c0eAS3iK.mjs';
+import { s as system_1_small, a as system_1, p as panotLogo, b as system_2, c as system_3_small, d as system_3, e as system_4 } from '../chunks/panot_logo_cO5y54i8.mjs';
 /* empty css                                  */
 export { r as renderers } from '../chunks/internal_BsTt5pTQ.mjs';
 

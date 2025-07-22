@@ -1,9 +1,9 @@
-import { c as createComponent, a as createAstro, r as renderComponent, b as renderScript, d as renderTemplate, m as maybeRenderHead, f as addAttribute } from '../../chunks/astro/server_BqnpntHy.mjs';
+import { c as createComponent, a as createAstro, r as renderComponent, b as renderScript, d as renderTemplate, m as maybeRenderHead, f as addAttribute } from '../../chunks/astro/server_iE4Xfp6e.mjs';
 import 'kleur/colors';
 /* empty css                                            */
-import { a as $$Layout, b as $$Loading, c as $$Topbar, d as $$Main, u as useTranslations, e as $$Footer2 } from '../../chunks/Footer2_0JUnMB6y.mjs';
-import { $ as $$HeaderDefault } from '../../chunks/Header_default_Cy9HIGBM.mjs';
-import { $ as $$ItemProduct } from '../../chunks/ItemProduct_Bntk2cyo.mjs';
+import { a as $$Layout, b as $$Loading, c as $$Topbar, d as $$Main, u as useTranslations, e as $$Footer2 } from '../../chunks/Footer2_BQlsr-kw.mjs';
+import { $ as $$HeaderDefault } from '../../chunks/Header_default_DxRZffVP.mjs';
+import { $ as $$ItemProduct } from '../../chunks/ItemProduct_c0eAS3iK.mjs';
 import { f as fc1, a as fc2, b as fc3_small, c as fc3, d as fc4, e as fc5_small, g as fc5, h as googlePlay, i as appStore } from '../../chunks/google_play_D2U0pUgT.mjs';
 /* empty css                                            */
 export { r as renderers } from '../../chunks/internal_BsTt5pTQ.mjs';

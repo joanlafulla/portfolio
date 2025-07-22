@@ -1,9 +1,9 @@
-import { c as createComponent, a as createAstro, r as renderComponent, b as renderScript, d as renderTemplate, m as maybeRenderHead, f as addAttribute } from '../chunks/astro/server_BqnpntHy.mjs';
+import { c as createComponent, a as createAstro, r as renderComponent, b as renderScript, d as renderTemplate, m as maybeRenderHead, f as addAttribute } from '../chunks/astro/server_iE4Xfp6e.mjs';
 import 'kleur/colors';
 /* empty css                                         */
-import { a as $$Layout, b as $$Loading, c as $$Topbar, d as $$Main, u as useTranslations, e as $$Footer2 } from '../chunks/Footer2_0JUnMB6y.mjs';
-import { $ as $$HeaderTrayecto, t as trayecto_1_large, a as trayecto_2_small, b as trayecto_2_large, c as trayecto_4_small, d as trayecto_4_large, e as trayecto_3_large } from '../chunks/trayecto_4_small_COcrReS7.mjs';
-import { $ as $$ItemProduct } from '../chunks/ItemProduct_Bntk2cyo.mjs';
+import { a as $$Layout, b as $$Loading, c as $$Topbar, d as $$Main, u as useTranslations, e as $$Footer2 } from '../chunks/Footer2_BQlsr-kw.mjs';
+import { $ as $$HeaderTrayecto, t as trayecto_1_large, a as trayecto_2_small, b as trayecto_2_large, c as trayecto_4_small, d as trayecto_4_large, e as trayecto_3_large } from '../chunks/trayecto_4_small_acBJ0HK8.mjs';
+import { $ as $$ItemProduct } from '../chunks/ItemProduct_c0eAS3iK.mjs';
 /* empty css                                    */
 export { r as renderers } from '../chunks/internal_BsTt5pTQ.mjs';
 

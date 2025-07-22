@@ -1,4 +1,4 @@
-import { f as createSvgComponent } from './Footer2_0JUnMB6y.mjs';
+import { f as createSvgComponent } from './Footer2_BQlsr-kw.mjs';
 
 const dark_1 = new Proxy({"src":"/_astro/darkblob_1.C396iPCc.webp","width":1500,"height":988,"format":"webp"}, {
 						get(target, name, receiver) {
