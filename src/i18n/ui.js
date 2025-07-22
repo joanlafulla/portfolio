@@ -10,7 +10,7 @@ export const showDefaultLang = false;
 
 export const labels = {
   'es': {
-    'hablamos': '¿Hablamos?',
+    'hablamos': '¿Hablamoss?',
     'hablamos.modal': '<p>Si quieres conocerme mejor, no dudes en darme un toque a través del correo electrónico: <a href="mailto:joanlafulla@hotmail.com"><strong>joanlafulla@hotmail.com</strong></a></p><p>También te dejo mi perfil en Linkedin y una versión más digerible de mi CV.</p>',
     'hablamos.linkedin': 'Mi perfil',
     'hablamos.cv': 'Mi CV',
