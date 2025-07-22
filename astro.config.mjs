@@ -13,7 +13,7 @@ export default defineConfig({
             redirectToDefaultLocale: true,
         }
     },
-    output: 'static',
+    output: 'server',
     adapter: vercel({
     imageService: true,
     webAnalytics: {
