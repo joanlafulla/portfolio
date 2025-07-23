@@ -19,6 +19,18 @@
     --header: var(--brown);
 }
 
+.dialog-content-text-link {
+		color: var(--dark-brown);
+		text-decoration: none;
+		font-weight: 700;
+}
+
+.dialog-content-text-link:hover {
+		text-decoration: underline;
+    text-underline-position: under;
+    text-underline-offset: .2rem;
+	}
+
 
 body {
     background-color: var(--light-gray);

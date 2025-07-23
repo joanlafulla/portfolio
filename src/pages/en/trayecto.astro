@@ -32,7 +32,7 @@ const pageAuthor = 'Joan Lafulla';
 
 <Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} author={pageAuthor} class="overflow-x-hidden">
 	<Loading />
-	<Topbar cluePosition="60%" />
+	<Topbar cluePosition="20%" />
     <Header/>
 	<Main>
         
@@ -88,9 +88,6 @@ const pageAuthor = 'Joan Lafulla';
 </Layout>
 
 <style>
-
-
-
     .trayecto_content_2,
     .trayecto_content_3 {
         max-width: 1200px;
@@ -121,7 +118,7 @@ const pageAuthor = 'Joan Lafulla';
     .img-large-extra {
         width: auto;
         max-width: 1200px;
-        height: fit-content;
+        height: auto;
         border-radius: 3.125rem;
         box-shadow: 0px 10px 16px -3px rgba(0,0,0,0.1);
         border: 1rem solid var(--yellow);
@@ -133,7 +130,7 @@ const pageAuthor = 'Joan Lafulla';
     .img-large-isolate,
     .img-large-picture {
         width: auto;
-        height: fit-content;
+        height: auto;
         border-radius: 3.125rem;
         box-shadow: 0px 10px 16px -3px rgba(0,0,0,0.1);
         border: 1rem solid var(--white);
@@ -145,7 +142,7 @@ const pageAuthor = 'Joan Lafulla';
     .row-2 .img-large-isolate {
         top: 4rem;
         left: 2.5rem;
-        width: 50%;
+        max-width: 282px;
     }
 
     .row-2 .img-large-picture {
@@ -156,7 +153,8 @@ const pageAuthor = 'Joan Lafulla';
 
     .row-3 .img-large-isolate {
         top: 8rem;
-        width: 46%;
+        max-width: 282px;
+        right: 12%;
     }
 
     .row-3 .img-large-picture {

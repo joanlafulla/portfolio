@@ -1,0 +1,64 @@
+---
+import { useTranslations } from '../i18n/utils';
+import { languageList } from '../i18n/ui';
+const currentLang = Astro.currentLocale || 'es';
+const translateLabels = useTranslations(currentLang as keyof typeof languageList);
+import { getRelativeLocaleUrl } from 'astro:i18n';
+---
+<div class="topBar_nav_works">
+    <nav class="topBar-nav-works-links">
+        <ul>
+            <li><a href={getRelativeLocaleUrl(currentLang, "apps_fotocasa")}>Fotocasa</a></li>
+            <li><a href={getRelativeLocaleUrl(currentLang, "darkblob")}>DarkBlobCine</a></li>
+            <li><a href={getRelativeLocaleUrl(currentLang, "apps_habitaclia")}>Habitaclia</a></li>
+            <li><a href={getRelativeLocaleUrl(currentLang, "trayecto")}>Trayecto</a></li>
+            <li><a href={getRelativeLocaleUrl(currentLang, "duplicados")}>Duplicados</a></li>
+            <li><a href={getRelativeLocaleUrl(currentLang, "system")}>Design System</a></li>
+        </ul>
+    </nav>
+</div>
+<style> 
+.topBar-nav-works-links ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Albert Sans', serif;
+    font-weight: 400;
+    color: var(--text);
+    font-size: 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: -3rem;
+    opacity: 0;
+    transition: top 0.5s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+.topBar-nav-works-links a {
+    text-decoration: none;
+    color: var(--text);
+    opacity: 0.7;
+}
+
+.topBar-nav-works-links a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+    opacity: 1;
+}
+
+.topBar-nav-works-links ul.showWorksLinks {
+    top: 0;
+    opacity: 1;
+    transition: top 0.5s ease-in-out, opacity 0.8s ease-in-out;
+    transition-delay: .8s;
+}
+
+@media (max-width: 960px) {
+        .topBar_nav_works {
+            display: none;
+        }
+    }
+</style>

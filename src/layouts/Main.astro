@@ -1,15 +1,14 @@
 ---
-
+const { overflow="clip" } = Astro.props;
 ---
-
 <main>
 <slot>
 </main>
 
-<style>
+<style define:vars={{ overflow: overflow }}>
     main {
         position: relative;
         z-index: 1;
-        overflow-x: clip;
+        overflow-x: var(--overflow);
     }
 </style>
