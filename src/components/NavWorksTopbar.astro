@@ -11,8 +11,8 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
             <li><a href={getRelativeLocaleUrl(currentLang, "apps_fotocasa")}>Fotocasa</a></li>
             <li><a href={getRelativeLocaleUrl(currentLang, "darkblob")}>DarkBlobCine</a></li>
             <li><a href={getRelativeLocaleUrl(currentLang, "apps_habitaclia")}>Habitaclia</a></li>
-            <li><a href={getRelativeLocaleUrl(currentLang, "trayecto")}>Trayecto</a></li>
-            <li><a href={getRelativeLocaleUrl(currentLang, "duplicados")}>Duplicados</a></li>
+            <li><a href={getRelativeLocaleUrl(currentLang, "trayecto")}>{translateLabels('nav.trayecto')}</a></li>
+            <li><a href={getRelativeLocaleUrl(currentLang, "duplicados")}>{translateLabels('nav.duplicados')}</a></li>
             <li><a href={getRelativeLocaleUrl(currentLang, "system")}>Design System</a></li>
         </ul>
     </nav>

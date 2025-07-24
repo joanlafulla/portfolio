@@ -10,6 +10,8 @@ export const showDefaultLang = false;
 
 export const labels = {
   'es': {
+    'nav.trayecto': 'Trayecto',
+    'nav.duplicados': 'Duplicados',
     'hablamos': '¿Hablamos?',
     'hablamos.modal': '<p>Si quieres conocerme mejor, no dudes en darme un toque a través del correo electrónico: <a href="mailto:joanlafulla@hotmail.com" class="dialog-content-text-link"><strong>joanlafulla@hotmail.com</strong></a></p><p>También te dejo mi perfil en Linkedin y una versión más digerible de mi CV.</p>',
     'hablamos.linkedin': 'Mi perfil',
@@ -95,8 +97,10 @@ export const labels = {
     'system.row3.body': '<p style="margin-top: 0;">Paleta de colores, estilos de texto, efectos (sombras, radius...) e iconografía son elementos clave para dotar de personalidad propia a cualquier website.</p><p>En un Design System multi-theme, la correcta definición de estos tokens, en sus versiones <em>light & dark mode</em>, es un proceso vital para mantener esa diferenciación en el <em>look & feel</em> y la personalidad de cada uno de los portales.</p>',
   },
   'en': {
+    'nav.trayecto': 'Route',
+    'nav.duplicados': 'Duplicates',
     'hablamos': 'Get in touch?',
-    'hablamos.modal': '<p>If you want to get to know me better, feel free to contact me via email:  <a href="mailto:joanlafulla@hotmail.com"><strong>joanlafulla@hotmail.com</strong></a></p><p>I also leave you my LinkedIn profile and a more digestible version of my CV.</p>',
+    'hablamos.modal': '<p>If you want to get to know me better, feel free to contact me via email:  <a href="mailto:joanlafulla@hotmail.com" class="dialog-content-text-link"><strong>joanlafulla@hotmail.com</strong></a></p><p>I also leave you my LinkedIn profile and a more digestible version of my CV.</p>',
     'hablamos.linkedin': 'My profile',
     'hablamos.cv': 'My CV',
     'go.home': 'Go home',
@@ -178,8 +182,10 @@ export const labels = {
     'system.row3.body': '<p style="margin-top: 0;">Color palette, text styles, effects (shadows, radius...) and iconography are key elements to give any website its own personality.</p><p>In a multi-theme Design System, the correct definition of these tokens, in their <em>light & dark mode</em> versions, is a vital process to maintain that differentiation in the <em>look & feel</em> and the personality of each of the websites.</p>',
   },
   'ca': {
+    'nav.trayecto': 'Trajecte',
+    'nav.duplicados': 'Duplicats',
     'hablamos': 'Parlem?',
-    'hablamos.modal': '<p>Si em vols conèixer millor, no dubtis a donar-me un toc a través del correu electrònic: <a href="mailto:joanlafulla@hotmail.com"><strong>joanlafulla@hotmail.com</strong></a></p><p>També et deixo el meu perfil a Linkedin i una versió més digerible del meu CV.</p>',
+    'hablamos.modal': '<p>Si em vols conèixer millor, no dubtis a donar-me un toc a través del correu electrònic: <a href="mailto:joanlafulla@hotmail.com" class="dialog-content-text-link"><strong>joanlafulla@hotmail.com</strong></a></p><p>També et deixo el meu perfil a Linkedin i una versió més digerible del meu CV.</p>',
     'hablamos.linkedin': 'El meu perfil',
     'hablamos.cv': 'El meu CV',
     'go.home': 'Tornar a l\'inici',

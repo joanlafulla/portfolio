@@ -52,6 +52,15 @@ html {
     interpolate-size: allow-keywords;
 }
 
+a {
+  outline: none !important
+}
+
+a:focus {
+  outline: 2px solid blue;
+  outline-offset: 2px;
+}
+
 /* 6. Improve media defaults */
 img, picture, video, canvas, svg {
     display: block;
