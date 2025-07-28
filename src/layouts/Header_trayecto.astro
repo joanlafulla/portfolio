@@ -7,6 +7,8 @@ const translateLabels = useTranslations(currentLang as keyof typeof languageList
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
 import Button from "../components/ButtonNavigation.astro"
+import trayecto_video_large from '../assets/trayecto/trayecto.mp4';
+import trayecto_video_small from '../assets/trayecto/trayecto_small.mp4';
 ---
 
 <header class="navigation-default">
@@ -16,6 +18,10 @@ import Button from "../components/ButtonNavigation.astro"
 </header>
 <section id="trayecto">
     <div class="trayecto_contenedor_1">
+        <video autoplay muted loop id="trayecto_video_large" class="trayecto_video_large">
+            <source src={trayecto_video_small} type="video/mp4" media="(max-width: 960px)">
+            <source src={trayecto_video_large} type="video/mp4" media="(min-width: 961px)">
+        </video>
         <div class="trayecto_content_1">
             <div class="trayecto_content_1_content">
                 <h1>{translateLabels('trayecto.row1.title')}</h1>
@@ -44,14 +50,24 @@ import Button from "../components/ButtonNavigation.astro"
 
     .trayecto_contenedor_1 {
         position: relative;
-        background: url('../assets/trayecto/trayecto_bg.webp') no-repeat;
+        /* background: url('../assets/trayecto/trayecto_bg.webp') no-repeat;
         background-size: cover;
-        background-position: center;
+        background-position: center; */
         width: 100%;
         height: 100%;
         opacity: 0;
         top: 2rem;
         transition: all 1.3s ease-in-out;
+    }
+
+    .trayecto_video_large {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
     }
 
     .trayecto_contenedor_1.go {
@@ -72,13 +88,14 @@ import Button from "../components/ButtonNavigation.astro"
         position: absolute;
         background-color: rgba(246,221,0,.9);
         color: var(--text);
-        padding: 2rem;
+        padding: 4rem;
         width: 40%;
         bottom: 8%;
         left: 2rem;
         opacity: 0;
         transition: all .8s ease-in-out;
         transition-delay: .5s;
+        border-radius: 2rem;
     }
 
     .trayecto_content_1_content.go {
@@ -119,6 +136,8 @@ import Button from "../components/ButtonNavigation.astro"
             padding: 1.5rem;
             width: calc(100% - 2rem);
             left: 2rem;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
         }
     }
 </style>
