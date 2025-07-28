@@ -18,9 +18,10 @@ import trayecto_video_small from '../assets/trayecto/trayecto_small.mp4';
 </header>
 <section id="trayecto">
     <div class="trayecto_contenedor_1">
-        <video autoplay muted loop id="trayecto_video_large" class="trayecto_video_large">
+        <video autoplay muted loop playsinline id="trayecto_video_large" class="trayecto_video_large">
             <source src={trayecto_video_small} type="video/mp4" media="(max-width: 960px)">
             <source src={trayecto_video_large} type="video/mp4" media="(min-width: 961px)">
+            <source srcset={trayecto_video_large} type="video/mp4">
         </video>
         <div class="trayecto_content_1">
             <div class="trayecto_content_1_content">
