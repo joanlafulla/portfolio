@@ -9,6 +9,8 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import Button from "../components/ButtonNavigation.astro"
 import trayecto_video_large from '../assets/trayecto/trayecto.mp4';
 import trayecto_video_small from '../assets/trayecto/trayecto_small.mp4';
+import user1 from '../assets/trayecto/user1.png';
+import user3 from '../assets/trayecto/user3.png';
 ---
 
 <header class="navigation-default">
@@ -26,7 +28,14 @@ import trayecto_video_small from '../assets/trayecto/trayecto_small.mp4';
         <div class="trayecto_content_1">
             <div class="trayecto_content_1_content">
                 <h1>{translateLabels('trayecto.row1.title')}</h1>
-                <p>{translateLabels('trayecto.row1.body')}</p>
+                <div class="testimonial1">
+                    <img src={user1.src} alt="Primer testimonio" />
+                    <p>{translateLabels('trayecto.row1.body')}</p>
+                </div>
+                <div class="testimonial2">
+                    <img src={user3.src} alt="Segundo testimonio" />
+                    <p>{translateLabels('trayecto.row1.body2')}</p>
+                </div>
             </div>
         </div>
     </div>
@@ -51,9 +60,6 @@ import trayecto_video_small from '../assets/trayecto/trayecto_small.mp4';
 
     .trayecto_contenedor_1 {
         position: relative;
-        /* background: url('../assets/trayecto/trayecto_bg.webp') no-repeat;
-        background-size: cover;
-        background-position: center; */
         width: 100%;
         height: 100%;
         opacity: 0;
@@ -104,27 +110,48 @@ import trayecto_video_small from '../assets/trayecto/trayecto_small.mp4';
         opacity: 1;
     }
 
+    .testimonial1, .testimonial2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .testimonial1 img, .testimonial2 img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0px 10px 16px -3px rgba(0,0,0,0.2);
+    }
+
+    .testimonial2 {
+        margin-top: 1.5rem;
+        flex-direction: row-reverse;
+    }
+
     .trayecto_content_1_content h1 {
         font-size: clamp(1.2rem, 1.5rem + 1vw, 2.5rem);
         color: var(--text);
     }
 
     .trayecto_content_1_content p {
-        font-family: 'Albert Sans', serif;
-        font-size: 1.375rem;
-        margin-bottom: 0;
+        font-size: 1.125rem;
+        margin: 0;
+        padding: 0;
         line-height: 1.5;
     }
 
     @media (max-width: 980px) {
         .trayecto_content_1_content {
-            width: 70%;
+            width: 60%;
             bottom: 4%;
             left: 1rem;
         }
 
         .trayecto_content_1_content p {
-            font-size: 1.125rem;
+            font-size: 1rem;
         }
     }
 
@@ -139,6 +166,11 @@ import trayecto_video_small from '../assets/trayecto/trayecto_small.mp4';
             left: 2rem;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
+        }
+
+        .testimonial1 img, .testimonial2 img {
+            width: 60px;
+            height: 60px;
         }
     }
 </style>

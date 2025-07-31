@@ -21,6 +21,10 @@ import trayecto_2_small from '../../assets/trayecto/trayecto_2_small.png';
 import trayecto_3_large from '../../assets/trayecto/trayecto_3_large.png';
 import trayecto_4_large from '../../assets/trayecto/trayecto_4_large.png';
 import trayecto_4_small from '../../assets/trayecto/trayecto_4_small.png';
+import user1 from '../../assets/trayecto/user1.png';
+import user2 from '../../assets/trayecto/user2.png';
+import user3 from '../../assets/trayecto/user3.png';
+import user4 from '../../assets/trayecto/user4.png';
 import Footer2 from '../../layouts/Footer2.astro';
 
 
@@ -34,7 +38,7 @@ const pageAuthor = 'Joan Lafulla';
 	<Loading />
 	<Topbar cluePosition="20%" />
     <Header/>
-	<Main>
+	<Main overflow="visible">
         
             <div class="trayecto_contenedor_2">
                 <div class="trayecto_content_2">
@@ -57,7 +61,22 @@ const pageAuthor = 'Joan Lafulla';
                     </ItemProduct>
                 </div>
             </div>
-           <div class="trayecto_contenedor_3">
+            <div class="trayecto_contenedor_4">
+                <div class="trayecto_content_4_content">
+                    <div class="trayecto_content_4_content_wrapper">
+                        <h1>{translateLabels('trayecto.row4.title')}</h1>
+                        <div set:html={translateLabels('trayecto.row4.body')} class="trayecto_content4_txt"></div>
+                        <ul class="trayecto_users">
+                            <li><img src={user1.src} alt="Usuario 1" /></li>
+                            <li><img src={user2.src} alt="Usuario 2" /></li>
+                            <li><img src={user3.src} alt="Usuario 3" /></li>
+                            <li><img src={user4.src} alt="Usuario 4" /></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="trayecto_content_4_bg"></div>
+            </div>
+            <div class="trayecto_contenedor_3">
                 <div class="trayecto_content_3">
                     <ItemProduct
                     title={translateLabels('trayecto.row3.title')}
@@ -72,7 +91,7 @@ const pageAuthor = 'Joan Lafulla';
                     textDirection="column">
                     <picture>
                         <source media="(max-width: 680px)" srcset={trayecto_4_small.src}>
-                        <img src={trayecto_4_large.src} alt="Pantalla en la que se muestra una opción de doble búsqueda por trayecto"  class="img-large-picture"/>
+                        <img src={trayecto_4_large.src} alt="Pantalla en la que se muestra una opción de doble búsqueda por trayecto" class="img-large-picture"/>
                     </picture>
                     <img src={trayecto_3_large.src} alt="Resultado de una doble búsqueda por tiempo de trayecto" class="img-large-isolate" />
                     </ItemProduct>
@@ -92,7 +111,7 @@ const pageAuthor = 'Joan Lafulla';
     .trayecto_content_3 {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 2rem;
+        padding: 2rem 2rem 8rem 2rem;
         z-index: 100;
         position: relative;
     }
@@ -162,30 +181,98 @@ const pageAuthor = 'Joan Lafulla';
         left: 3%;
     }
 
-    .bigplus {
-        position: absolute;
-        top: -7%;
-        right: -3%;
-        max-width: 450px;
-        height: auto;
-        z-index: 200;
-        animation-name: rotarBigPlus;
-        animation-duration: 1.5s;
-        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
+    .trayecto_contenedor_4 {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 80vh;
+        background-color: var(--dark-brown);
+        display: flex;
+        align-items: center;
     }
 
-    @keyframes rotarBigPlus {
-        0% {
-            transform: rotate(0deg);
+    .trayecto_content_4_bg {
+        width: 50%;
+        height: 100%;
+        background-image: url('../../assets/trayecto/research.webp');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .trayecto_content_4_content {
+        width: 50%;
+        color: var(--white);
+        padding: 4rem;
+        z-index: 100;
+    }
+
+    .trayecto_content_4_content_wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        max-width: 55%;
+        margin: 0 auto;
+    }
+
+    .trayecto_content_4_content h1 {
+        font-size: clamp(1.2rem, 1.5rem + 1vw, 2.5rem);
+        color: var(--white);
+    }
+
+    .trayecto_content_4_content p {
+        font-family: 'Albert Sans', serif;
+        font-size:clamp(1rem,1rem + 0.5vw,1.25rem);
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
+
+    .trayecto_content4_txt {
+        font-family: 'Albert Sans', serif;
+        font-size: clamp(1rem, 1rem + 0.5vw, 1.25rem);
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
+
+    .trayecto_users {
+        display: flex;
+        margin: 0;
+        flex-wrap: wrap;
+        list-style: none;
+        padding: 0;
+    }
+
+    .trayecto_users li {
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .trayecto_users li:nth-child(odd) {
+        border: 4px solid var(--yellow);
+    }
+
+    .trayecto_users li:nth-child(even) {
+        border: 4px solid var(--coral);
+    }
+
+    .trayecto_users li:not(:first-child) {
+        margin-left: -12px;
+    }
+
+    @media (max-width: 1440px) {
+        .trayecto_content_4_content_wrapper {
+            max-width: 75%;
         }
-        100% {
-            transform: rotate(360deg);
-        } 
+    }
+
+    @media (max-width: 1125px) {
+        .trayecto_content_4_content_wrapper {
+            max-width: 100%;
+        }
     }
 
     @media (max-width: 1100px) {
+
         .row-2 .img-large-isolate {
             display: none;
         }
@@ -214,10 +301,34 @@ const pageAuthor = 'Joan Lafulla';
             margin: 1.5rem 0;
         }
 
-        .bigplus {
-            top: -7%;
-            right: -3%;
-            max-width: 300px;
+        .trayecto_content_4_content_wrapper {
+            max-width: 100%;
+        }
+
+        .trayecto_users li:last-child {
+            display: none;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .trayecto_contenedor_4 {
+            height: auto;
+            flex-direction: column-reverse;
+        }
+
+        .trayecto_content_4_content {
+            width: 100%;
+            padding: 4rem 2rem;
+        }
+
+        .trayecto_content_4_bg {
+            width: 100%;
+            height: 300px;
+        }
+
+        .trayecto_content_2,
+        .trayecto_content_3 {
+            padding: 2rem;
         }
     }
 
@@ -244,14 +355,6 @@ const pageAuthor = 'Joan Lafulla';
 
         .item-product.row-3 {
             margin-bottom: 6rem;
-        }
-    }
-
-    @media (max-width: 524px) {
-        .bigplus {
-            top: -5%;
-            right: -30%;
-            max-width: 250px;
         }
     }
 </style>
