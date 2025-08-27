@@ -159,26 +159,31 @@ const pageAuthor = 'Joan Lafulla';
     }
 
     .row-2 .img-large-isolate {
-        top: 4rem;
+        top: 12rem;
         left: 2.5rem;
         max-width: 282px;
+        opacity: 0;
     }
 
     .row-2 .img-large-picture {
-        top: -4rem;
+        top: 16rem;
         right: 2.5rem;
         max-width: 282px;
+        opacity: 0;
     }
 
     .row-3 .img-large-isolate {
-        top: 8rem;
+        top: 20rem;
         max-width: 282px;
         right: 12%;
+        opacity: 0;
     }
 
     .row-3 .img-large-picture {
+        top: 12rem;
         max-width: 282px;
         left: 3%;
+        opacity: 0;
     }
 
     .trayecto_contenedor_4 {
@@ -360,6 +365,78 @@ const pageAuthor = 'Joan Lafulla';
 </style>
 
 <script>
+import Lenis from 'lenis'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+const lenis = new Lenis();
+lenis.on('scroll', ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+		lenis.raf(time * 1000);
+});
+
+
+gsap.ticker.lagSmoothing(0);
+
+//let mm = gsap.matchMedia();
+
+const tl = gsap.timeline({
+		defaults: {
+		ease: 'power3.inOut', 
+		duration: .8
+		},
+		scrollTrigger: {
+			trigger: '.trayecto_contenedor_2',
+			start: 'top 85%',
+			end: 'top+=60% 60%',
+			scrub: true,
+			once: true,
+		    //markers: true
+		}
+});
+
+const tl2 = gsap.timeline({
+		defaults: {
+		ease: 'power3.inOut', 
+		duration: .8
+		},
+		scrollTrigger: {
+			trigger: '.trayecto_contenedor_3',
+			start: 'top 85%',
+			end: 'top+=60% 60%',
+			scrub: true,
+			once: true,
+		    //markers: true
+		}
+});
+
+tl 
+    .to('.row-2 .img-large-picture ', {
+			y: "-20rem",
+			opacity: 1,
+	})
+
+    .to('.row-2 .img-large-isolate', {
+            y: "-8rem",
+            opacity: 1,
+    }), "-0.5";
+
+tl2 
+    .to('.row-3 .img-large-picture ', {
+			y: "-12rem",
+			opacity: 1,
+	})
+
+    .to('.row-3 .img-large-isolate', {
+            y: "-12rem",
+            opacity: 1,
+    }), "-0.5";
+
+
+
+
 // Selecciona el elemento al que quieres añadir el estilo
 const myFooter = document.querySelector('footer');
 

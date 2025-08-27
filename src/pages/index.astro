@@ -17,7 +17,6 @@ import Skills from '../layouts/Skills.astro';
 import Experience from '../layouts/Experience.astro';
 import Quotes from '../layouts/Quotes.astro';
 import Footer2 from '../layouts/Footer2.astro';
-import { escapeHTML } from 'astro/runtime/server/escape.js';
 
 const pageTitle = 'Joan Lafulla - UX/UI Designer';
 const pageDescription = 'UX/UI Designer con sede en Barcelona, España. Creando diseños centrados en el usuario que son funcionales y visualmente atractivos.';
@@ -52,7 +51,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const dialogOpenButton = document.querySelector('.open-dialog');
 const dialog = document.getElementById('meDialog');
-let tickerTimer = 1000;
 
 const lenis = new Lenis();
 lenis.on('scroll', ScrollTrigger.update);
