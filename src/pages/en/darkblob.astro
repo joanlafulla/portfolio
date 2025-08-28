@@ -80,6 +80,15 @@ const pageAuthor = 'Joan Lafulla';
                     </ItemProduct>
                 </div>
             </div>
+            <div class="darkblob_contenedor_extra">
+                    <div class="darkblob_content_extra">
+                        <div class="row-content">
+                            <h1>{translateLabels('dark.rowextra.title')}</h1>
+                            <p>{translateLabels('dark.rowextra.body')}</p>
+                            <p set:html={translateLabels('dark.rowextra.body2')}></p>
+                        </div>
+                    </div>
+            </div>
             <div class="darkblob_contenedor_3">
                 <div class="darkblob_content_3">
                     <ItemProduct
@@ -122,7 +131,8 @@ const pageAuthor = 'Joan Lafulla';
 
     .darkblob_content_1,
     .darkblob_content_2,
-    .darkblob_content_3 {
+    .darkblob_content_3,
+    .darkblob_content_extra {
         max-width: 1200px;
         margin: 0 auto;
         padding: 2rem;
@@ -134,6 +144,10 @@ const pageAuthor = 'Joan Lafulla';
     .darkblob_contenedor_3 {
         background-color: var(--yellow);
         position: relative;
+    }
+
+    .darkblob_contenedor_2 {
+        padding-bottom: 5rem;
     }
 
     .item-product.row-2 {
@@ -194,6 +208,11 @@ const pageAuthor = 'Joan Lafulla';
         animation-direction: alternate;
     }
 
+    .item-product-text a {
+        color: var(--colorText) !important;
+        text-decoration: underline;
+    }
+
     @keyframes rotarBigPlus {
         0% {
             transform: rotate(0deg);
@@ -201,6 +220,45 @@ const pageAuthor = 'Joan Lafulla';
         100% {
             transform: rotate(360deg);
         } 
+    }
+
+    .darkblob_contenedor_extra {
+        background-image: url('../../assets/darkblob/psicosis_2.jpg'), url('../../assets/darkblob/psicosis_1.jpg');
+        background-blend-mode: lighten, normal;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        height: 85dvh;
+        width: 100%;
+    }
+
+    .darkblob_content_extra {
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .row-content {
+        color: white;
+        width: 45%;
+    }
+
+    .row-content h1 {
+        font-size: clamp(1.5rem,1.5rem + 1vw,2.5rem);
+        font-weight: bold;
+        text-wrap: pretty;
+        color: var(--white);
+    }
+
+    .row-content p {
+        font-size: clamp(1rem, 1rem + 0.5vw, 1.25rem);
+        font-family: "Albert Sans", sans-serif;
+        line-height: 1.5;
+        color: var(--white);
     }
 
     @media (max-width: 1100px) {
@@ -227,6 +285,14 @@ const pageAuthor = 'Joan Lafulla';
             right: -3%;
             max-width: 300px;
         }
+
+        .darkblob_contenedor_2 {
+            padding-bottom: 0;
+        }
+
+        .row-content {
+            width: 60%;
+        }
     }
 
     @media (max-width: 680px) {
@@ -249,7 +315,11 @@ const pageAuthor = 'Joan Lafulla';
 
         .apps_fotocasa_contenedor .item-product:first-child {
             margin: 0;
-        } 
+        }
+
+        .row-content {
+            width: 80%;
+        }
     }
 
     @media (max-width: 524px) {
@@ -258,10 +328,48 @@ const pageAuthor = 'Joan Lafulla';
             right: -30%;
             max-width: 250px;
         }
+
+        .row-content {
+            width: 100%;
+        }
     }
 </style>
 
 <script>
+
+// Animación GSAP
+import Lenis from 'lenis'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+const lenis = new Lenis();
+lenis.on('scroll', ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+		lenis.raf(time * 1000);
+});
+
+
+gsap.ticker.lagSmoothing(0);
+
+const tl = gsap.timeline({
+		defaults: {
+		ease: 'power3.inOut', 
+		},
+		scrollTrigger: {
+			trigger: '.darkblob_contenedor_extra',
+			start: 'top 40%',
+			end: 'bottom-=+20%',
+			scrub: true,
+		    //markers: true
+		}
+});
+
+tl
+.to(".darkblob_contenedor_extra", { backgroundBlendMode: "hue, normal"})
+.to(".darkblob_contenedor_extra", { backgroundBlendMode: "lighten, normal"})
+
 // Selecciona el elemento al que quieres añadir el estilo
 const myFooter = document.querySelector('footer');
 
