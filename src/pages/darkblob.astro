@@ -90,6 +90,7 @@ const pageAuthor = 'Joan Lafulla';
                             <p set:html={translateLabels('dark.rowextra.body2')}></p>
                         </div>
                     </div>
+                    <div class="darkblob_contenedor_extra_bis"></div>
             </div>
             <div class="darkblob_contenedor_3">
                 <div class="darkblob_content_3">
@@ -224,17 +225,31 @@ const pageAuthor = 'Joan Lafulla';
         } 
     }
 
-    .darkblob_contenedor_extra {
-        background-image: url('../assets/darkblob/psicosis_2.jpg'), url('../assets/darkblob/psicosis_1.jpg');
-        background-blend-mode: lighten, normal;
+    .darkblob_contenedor_extra,
+    .darkblob_contenedor_extra_bis {
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
         margin: 0;
         padding: 0;
         position: relative;
-        height: 85dvh;
+        height: 85vh;
         width: 100%;
+    }
+
+    .darkblob_contenedor_extra {
+        background-image: url('../assets/darkblob/psicosis_1.jpg');
+    }
+
+    .darkblob_contenedor_extra_bis {
+        background-image: url('../assets/darkblob/psicosis_3.jpg');
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
     }
 
     .darkblob_content_extra {
@@ -357,20 +372,23 @@ gsap.ticker.lagSmoothing(0);
 
 const tl = gsap.timeline({
 		defaults: {
-		ease: 'power3.inOut', 
+		ease: 'power3.inOut',
+        repeat: -1,
+        yoyo: true,
+        duration: .5,
 		},
-		scrollTrigger: {
+		/* scrollTrigger: {
 			trigger: '.darkblob_contenedor_extra',
 			start: 'top 40%',
-			end: 'bottom-=+20%',
+			end: 'top-=+60%',
 			scrub: true,
 		    //markers: true
-		}
+		} */
 });
 
 tl
-.to(".darkblob_contenedor_extra", { backgroundBlendMode: "hue, normal"})
-.to(".darkblob_contenedor_extra", { backgroundBlendMode: "lighten, normal"})
+.to(".darkblob_contenedor_extra_bis", { opacity: 1})
+.to(".darkblob_contenedor_extra_bis", { opacity: 0})
 
 // Selecciona el elemento al que quieres añadir el estilo
 const myFooter = document.querySelector('footer');
