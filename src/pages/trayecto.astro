@@ -107,11 +107,18 @@ const pageAuthor = 'Joan Lafulla';
 </Layout>
 
 <style>
-    .trayecto_content_2,
+    .trayecto_content_2 {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem 6rem 2rem;
+        z-index: 100;
+        position: relative;
+    }
+
     .trayecto_content_3 {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 2rem 2rem 8rem 2rem;
+        padding: 8rem 2rem 8rem 2rem;
         z-index: 100;
         position: relative;
     }
@@ -122,12 +129,9 @@ const pageAuthor = 'Joan Lafulla';
         position: relative;
     }
 
-    .item-product.row-2 {
-        margin: 0;
-    }
-
+    .item-product.row-2,
     .item-product.row-3 {
-        margin-bottom: 12rem;
+        margin: 0;
     }
 
     .item-product-text {
@@ -159,31 +163,27 @@ const pageAuthor = 'Joan Lafulla';
     }
 
     .row-2 .img-large-isolate {
-        top: 12rem;
+        top: 0rem;
         left: 2.5rem;
         max-width: 282px;
-        opacity: 0;
     }
 
     .row-2 .img-large-picture {
-        top: 16rem;
-        right: 2.5rem;
+        top: 3rem;
+        right: 1.5rem;
         max-width: 282px;
-        opacity: 0;
     }
 
     .row-3 .img-large-isolate {
-        top: 20rem;
+        top: 3rem;
         max-width: 282px;
-        right: 12%;
-        opacity: 0;
+        right: 14%;
     }
 
     .row-3 .img-large-picture {
-        top: 12rem;
+        top: -1rem;
         max-width: 282px;
-        left: 3%;
-        opacity: 0;
+        left: 4%;
     }
 
     .trayecto_contenedor_4 {
@@ -379,62 +379,24 @@ gsap.ticker.add((time) => {
 
 
 gsap.ticker.lagSmoothing(0);
+const avatars = gsap.utils.toArray('.trayecto_users li');
 
-//let mm = gsap.matchMedia();
-
-const tl = gsap.timeline({
-		defaults: {
-		ease: 'power3.inOut', 
-		duration: .8
-		},
-		scrollTrigger: {
-			trigger: '.trayecto_contenedor_2',
-			start: 'top 85%',
-			end: 'top+=60% 60%',
-			scrub: true,
-			once: true,
-		    //markers: true
-		}
-});
-
-const tl2 = gsap.timeline({
-		defaults: {
-		ease: 'power3.inOut', 
-		duration: .8
-		},
-		scrollTrigger: {
-			trigger: '.trayecto_contenedor_3',
-			start: 'top 85%',
-			end: 'top+=60% 60%',
-			scrub: true,
-			once: true,
-		    //markers: true
-		}
-});
-
-tl 
-    .to('.row-2 .img-large-picture ', {
-			y: "-20rem",
-			opacity: 1,
-	})
-
-    .to('.row-2 .img-large-isolate', {
-            y: "-8rem",
-            opacity: 1,
-    }), "-0.5";
-
-tl2 
-    .to('.row-3 .img-large-picture ', {
-			y: "-12rem",
-			opacity: 1,
-	})
-
-    .to('.row-3 .img-large-isolate', {
-            y: "-12rem",
-            opacity: 1,
-    }), "-0.5";
-
-
+gsap.fromTo(
+  avatars,
+  { opacity: 0, x: -10 },
+  {
+    opacity: 1,
+    x: 0,
+    duration: 0.5,
+    stagger: 0.3, // intervalo entre elementos: 0.3s
+    scrollTrigger: {
+        trigger: '.trayecto_content_4_content_wrapper',
+        start: '15% center',
+	    end: 'top 50%',
+        //markers: true
+    }
+  }
+);
 
 
 // Selecciona el elemento al que quieres añadir el estilo
