@@ -107,11 +107,18 @@ const pageAuthor = 'Joan Lafulla';
 </Layout>
 
 <style>
-    .trayecto_content_2,
+    .trayecto_content_2 {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 6rem 2rem 6rem 2rem;
+        z-index: 100;
+        position: relative;
+    }
+
     .trayecto_content_3 {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 2rem 2rem 8rem 2rem;
+        padding: 8rem 2rem 8rem 2rem;
         z-index: 100;
         position: relative;
     }
@@ -122,12 +129,9 @@ const pageAuthor = 'Joan Lafulla';
         position: relative;
     }
 
-    .item-product.row-2 {
-        margin: 0;
-    }
-
+    .item-product.row-2,
     .item-product.row-3 {
-        margin-bottom: 12rem;
+        margin: 0;
     }
 
     .item-product-text {
@@ -159,26 +163,27 @@ const pageAuthor = 'Joan Lafulla';
     }
 
     .row-2 .img-large-isolate {
-        top: 4rem;
+        top: 0rem;
         left: 2.5rem;
         max-width: 282px;
     }
 
     .row-2 .img-large-picture {
-        top: -4rem;
-        right: 2.5rem;
+        top: 3rem;
+        right: 1.5rem;
         max-width: 282px;
     }
 
     .row-3 .img-large-isolate {
-        top: 8rem;
+        top: 3rem;
         max-width: 282px;
-        right: 12%;
+        right: 14%;
     }
 
     .row-3 .img-large-picture {
+        top: -1rem;
         max-width: 282px;
-        left: 3%;
+        left: 4%;
     }
 
     .trayecto_contenedor_4 {
@@ -194,7 +199,7 @@ const pageAuthor = 'Joan Lafulla';
     .trayecto_content_4_bg {
         width: 50%;
         height: 100%;
-        background-image: url('../../assets/trayecto/research.webp');
+        background-image: url('../assets/trayecto/research.webp');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -296,11 +301,6 @@ const pageAuthor = 'Joan Lafulla';
             max-width: 800px;
         }
 
-        .item-product,
-        .item-product.row-2  {
-            margin: 1.5rem 0;
-        }
-
         .trayecto_content_4_content_wrapper {
             max-width: 100%;
         }
@@ -328,7 +328,7 @@ const pageAuthor = 'Joan Lafulla';
 
         .trayecto_content_2,
         .trayecto_content_3 {
-            padding: 2rem;
+            padding: 4rem 2rem;
         }
     }
 
@@ -354,12 +354,46 @@ const pageAuthor = 'Joan Lafulla';
         }
 
         .item-product.row-3 {
-            margin-bottom: 6rem;
+            margin-bottom: 4rem;
         }
     }
 </style>
 
 <script>
+import Lenis from 'lenis'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+const lenis = new Lenis();
+lenis.on('scroll', ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+		lenis.raf(time * 1000);
+});
+
+
+gsap.ticker.lagSmoothing(0);
+const avatars = gsap.utils.toArray('.trayecto_users li');
+
+gsap.fromTo(
+  avatars,
+  { opacity: 0, x: -10 },
+  {
+    opacity: 1,
+    x: 0,
+    duration: 0.5,
+    stagger: 0.3, // intervalo entre elementos: 0.3s
+    scrollTrigger: {
+        trigger: '.trayecto_content_4_content_wrapper',
+        start: '15% center',
+	    end: 'top 50%',
+        //markers: true
+    }
+  }
+);
+
+
 // Selecciona el elemento al que quieres añadir el estilo
 const myFooter = document.querySelector('footer');
 
